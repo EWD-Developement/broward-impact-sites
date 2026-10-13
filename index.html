@@ -1,0 +1,1050 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <title>Broward Impact | Web Portfolio & Architecture Showcase</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;500;600;700&family=Oswald:wght@500;600;700&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090a0c;
+      --surface: #111317;
+      --surface-elevated: #181b22;
+      --surface-border: rgba(255, 255, 255, 0.08);
+      --gold: #d4af37;
+      --gold-light: #f3e5ab;
+      --gold-glow: rgba(212, 175, 55, 0.25);
+      --red: #cb0b15;
+      --red-glow: rgba(203, 11, 21, 0.3);
+      --text-main: #f4f6f8;
+      --text-muted: #9ba1a8;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      background: var(--bg);
+      color: var(--text-main);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 15% 10%, rgba(212, 175, 55, 0.04) 0%, transparent 45%),
+        radial-gradient(circle at 85% 80%, rgba(203, 11, 21, 0.04) 0%, transparent 45%);
+    }
+
+    .container {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 50px 24px 100px;
+    }
+
+    /* Top Brand Bar */
+    .brand-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--surface-border);
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .brand-logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, var(--gold), #96741d);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #090a0c;
+      font-weight: 900;
+      font-size: 20px;
+      font-family: 'Oswald', sans-serif;
+      box-shadow: 0 4px 16px var(--gold-glow);
+    }
+
+    .brand-text h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.25rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    .brand-text span {
+      font-size: 0.8rem;
+      color: var(--gold);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .meta-badges {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 6px 14px;
+      border-radius: 99px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #ccc;
+    }
+
+    .badge-live {
+      background: rgba(34, 197, 94, 0.1);
+      border-color: rgba(34, 197, 94, 0.35);
+      color: #4ade80;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 10px #22c55e;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    /* Hero Header */
+    .hero {
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto 50px;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+      padding: 4px 14px;
+      border-radius: 99px;
+      background: rgba(212, 175, 55, 0.08);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+    }
+
+    .hero h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+      font-weight: 700;
+      line-height: 1.08;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, #b8860b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ⭐ FEATURED SHOWCASE BANNER (ChatGPT Favorite) */
+    .featured-banner {
+      background: linear-gradient(135deg, #16181f 0%, #101116 100%);
+      border: 2px solid var(--gold);
+      border-radius: var(--radius-lg);
+      padding: 36px 40px;
+      margin-bottom: 60px;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.7), 0 0 35px var(--gold-glow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .featured-banner::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--gold), #ffffff, var(--gold));
+    }
+
+    .featured-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--gold);
+      color: #0b0c0e;
+      font-weight: 800;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 99px;
+      margin-bottom: 18px;
+    }
+
+    .featured-content {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .featured-content { grid-template-columns: 1fr; }
+      .featured-banner { padding: 28px 22px; }
+    }
+
+    .featured-info h2 {
+      font-family: 'Spectral', Georgia, serif;
+      font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    .featured-info h2 a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .featured-info h2 a:hover {
+      color: var(--gold-light);
+    }
+
+    .featured-info p {
+      color: #b5bcc5;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin-bottom: 22px;
+    }
+
+    .featured-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .feat-chip {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      color: #e2e8f0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .featured-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+      color: #0b0c0e;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 14px 26px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      box-shadow: 0 6px 20px var(--gold-glow);
+      transition: all 0.2s ease;
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(212, 175, 55, 0.45);
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 14px 22px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold);
+      background: rgba(212, 175, 55, 0.08);
+      color: var(--gold);
+    }
+
+    /* Live Preview Screen Graphic */
+    .preview-window {
+      background: #0b0c0e;
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+    }
+
+    .preview-header {
+      background: #181a20;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .preview-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .dot-red { background: #ef4444; }
+    .dot-yellow { background: #eab308; }
+    .dot-green { background: #22c55e; }
+
+    .preview-url {
+      margin-left: 8px;
+      background: #0f1013;
+      border-radius: 4px;
+      padding: 3px 10px;
+      font-size: 0.72rem;
+      color: #94a3b8;
+      font-family: monospace;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex: 1;
+    }
+
+    .preview-body {
+      padding: 24px 20px;
+      background: linear-gradient(180deg, #111317 0%, #0d0e11 100%);
+      min-height: 190px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .blueprint-mock {
+      border: 1px dashed rgba(212, 175, 55, 0.4);
+      padding: 18px 24px;
+      border-radius: 8px;
+      background: rgba(212, 175, 55, 0.03);
+      width: 100%;
+    }
+
+    .blueprint-mock b {
+      font-family: 'Oswald', sans-serif;
+      color: #fff;
+      font-size: 1.1rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .blueprint-mock span {
+      font-size: 0.8rem;
+      color: var(--gold);
+      font-family: monospace;
+      letter-spacing: 0.04em;
+    }
+
+    /* Filter Controls */
+    .filter-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .section-title h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.8rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    .section-title span {
+      color: var(--gold);
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: 8px;
+      background: var(--surface);
+      padding: 5px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--surface-border);
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-btn:hover {
+      color: #fff;
+    }
+
+    .filter-btn.active {
+      background: var(--surface-elevated);
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    /* Cards Grid */
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 26px;
+    }
+
+    @media (max-width: 480px) {
+      .showcase-grid { grid-template-columns: 1fr; }
+    }
+
+    .site-card {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+
+    .site-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(212, 175, 55, 0.4);
+      box-shadow: 0 16px 36px rgba(0,0,0,0.6);
+    }
+
+    .card-visual {
+      height: 160px;
+      background: #171920;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-bottom: 1px solid var(--surface-border);
+    }
+
+    .card-visual-gradient-1 { background: radial-gradient(circle at 50% 50%, #2a2416 0%, #121318 100%); }
+    .card-visual-gradient-2 { background: radial-gradient(circle at 50% 50%, #1e2638 0%, #101217 100%); }
+    .card-visual-gradient-3 { background: radial-gradient(circle at 50% 50%, #2f1d1d 0%, #121013 100%); }
+    .card-visual-gradient-4 { background: radial-gradient(circle at 50% 50%, #1a2a22 0%, #0e1411 100%); }
+    .card-visual-gradient-5 { background: radial-gradient(circle at 50% 50%, #25222b 0%, #111015 100%); }
+
+    .card-mockup-badge {
+      font-family: 'Oswald', sans-serif;
+      text-transform: uppercase;
+      font-size: 1.15rem;
+      letter-spacing: 0.08em;
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(14, 15, 18, 0.85);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+    }
+
+    .card-tag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 99px;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #fff;
+    }
+
+    .tag-architectural { border-color: var(--gold); color: var(--gold); }
+    .tag-variation { border-color: #60a5fa; color: #93c5fd; }
+    .tag-tool { border-color: #34d399; color: #6ee7b7; }
+    .tag-system { border-color: #f472b6; color: #f9a8d4; }
+
+    .card-folder-badge {
+      position: absolute;
+      bottom: 12px;
+      right: 14px;
+      font-family: monospace;
+      font-size: 0.75rem;
+      color: #8e96a4;
+      background: rgba(0,0,0,0.6);
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .card-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .card-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+
+    .card-subtitle {
+      font-size: 0.85rem;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .card-desc {
+      color: #a3abb7;
+      font-size: 0.92rem;
+      line-height: 1.55;
+      margin-bottom: 18px;
+      flex: 1;
+    }
+
+    .card-features {
+      list-style: none;
+      margin-bottom: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .card-features li {
+      font-size: 0.82rem;
+      color: #cbd5e1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-features li svg {
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .card-footer {
+      display: flex;
+      gap: 10px;
+      margin-top: auto;
+      padding-top: 18px;
+      border-top: 1px solid var(--surface-border);
+    }
+
+    .card-btn {
+      flex: 1;
+      background: var(--surface-elevated);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #fff;
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-align: center;
+      padding: 10px 14px;
+      border-radius: 6px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .card-btn:hover {
+      background: #242933;
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .card-btn-primary {
+      background: rgba(212, 175, 55, 0.15);
+      border-color: rgba(212, 175, 55, 0.35);
+      color: var(--gold-light);
+    }
+
+    .card-btn-primary:hover {
+      background: var(--gold);
+      color: #090a0c;
+      border-color: var(--gold);
+    }
+
+    /* Footer info */
+    .showcase-footer {
+      margin-top: 80px;
+      padding-top: 36px;
+      border-top: 1px solid var(--surface-border);
+      text-align: center;
+      color: #717885;
+      font-size: 0.85rem;
+    }
+
+    .showcase-footer a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .showcase-footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Top Brand Bar -->
+    <header class="brand-bar">
+      <div class="brand-logo-wrap">
+        <div class="brand-mark">BI</div>
+        <div class="brand-text">
+          <h3>Broward Impact Window &amp; Door</h3>
+          <span>FL State Certified General Contractor CGC 1514968</span>
+        </div>
+      </div>
+      <div class="meta-badges">
+        <div class="badge badge-live">
+          <div class="pulse-dot"></div>
+          <span>11 Independent Sites</span>
+        </div>
+        <div class="badge">
+          <span>Dania Beach, FL</span>
+        </div>
+        <div class="badge">
+          <span>GitHub &amp; Cloud Ready</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Header -->
+    <section class="hero">
+      <span class="hero-eyebrow">Enterprise Web Directory &amp; Strategy Suite</span>
+      <h1>Web Portfolio &amp; <span>Showcase Hub</span></h1>
+      <p>Every website and variation is completely separated into its own folder with independent HTML, CSS, JavaScript, and assets. Select any site below to launch it instantly.</p>
+    </section>
+
+    <!-- ⭐ FEATURED SHOWCASE BANNER (ChatGPT Favorite) -->
+    <section class="featured-banner">
+      <div class="featured-badge">★ USER FAVORITE · LIVE CHATGPT HOSTED</div>
+      <div class="featured-content">
+        <div class="featured-info">
+          <h2>
+            <a href="https://broward-impact-architectural.broward-impa-2582.chatgpt.site/home-architectural" target="_blank" rel="noopener">
+              Broward Impact Window &amp; Door | Architectural Luxury &amp; HVHZ Engineering ↗
+            </a>
+          </h2>
+          <p>
+            The acclaimed flagship luxury experience hosted live on ChatGPT Sites. Features the X-Ray Blueprint Spotlight Hero, interactive Daylight &amp; 175+ MPH Cat 5 Storm Simulator, CAD Wireframe Project Gallery, Custom Glass Cursor, and Dania Beach Showroom Consultation Booking.
+          </p>
+          <div class="featured-highlights">
+            <span class="feat-chip">💎 Architectural Luxury</span>
+            <span class="feat-chip">🌪️ 175 MPH Storm Simulator</span>
+            <span class="feat-chip">📐 CAD Wireframe Hover</span>
+            <span class="feat-chip">🛡️ Miami-Dade NOA Specs</span>
+          </div>
+          <div class="featured-actions">
+            <a href="https://broward-impact-architectural.broward-impa-2582.chatgpt.site/home-architectural" target="_blank" rel="noopener" class="btn-gold">
+              Launch Live ChatGPT Site ↗
+            </a>
+            <a href="./01-architectural-luxury/index.html" class="btn-outline">
+              Open Local Standalone Folder →
+            </a>
+          </div>
+        </div>
+
+        <div class="preview-window">
+          <div class="preview-header">
+            <div class="preview-dot dot-red"></div>
+            <div class="preview-dot dot-yellow"></div>
+            <div class="preview-dot dot-green"></div>
+            <div class="preview-url">broward-impact-architectural.broward-impa-2582.chatgpt.site</div>
+          </div>
+          <div class="preview-body">
+            <div class="blueprint-mock">
+              <b>X-RAY BLUEPRINT SPOTLIGHT</b>
+              <span>175 MPH HVHZ STORM SIMULATOR</span>
+            </div>
+            <p style="margin-top:14px; font-size:0.8rem; color:#8e96a4;">
+              Live cloud deployment · No update required
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filter Section -->
+    <div class="filter-section">
+      <div class="section-title">
+        <h2>Separated <span>Websites &amp; Variations</span></h2>
+      </div>
+      <div class="filter-tabs">
+        <button class="filter-btn active" onclick="filterCards('all')">All Sites (11)</button>
+        <button class="filter-btn" onclick="filterCards('architectural')">Architectural &amp; Luxury (3)</button>
+        <button class="filter-btn" onclick="filterCards('variation')">The 6 Homepage Angles (6)</button>
+        <button class="filter-btn" onclick="filterCards('tools')">Products &amp; Design (2)</button>
+      </div>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="showcase-grid" id="showcaseGrid">
+
+      <!-- 1. Architectural Luxury Local -->
+      <div class="site-card" data-category="architectural">
+        <div class="card-visual card-visual-gradient-1">
+          <div class="card-tag tag-architectural">Flagship Showcase</div>
+          <div class="card-mockup-badge">ARCHITECTURAL LUXURY</div>
+          <div class="card-folder-badge">📁 01-architectural-luxury</div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Architectural Luxury Flagship</h3>
+          <div class="card-subtitle">Vira WD Adaptation &middot; Local Standalone</div>
+          <p class="card-desc">The complete offline/local counterpart to the ChatGPT live deployment. Full X-Ray Blueprint Hero, Daylight &amp; Storm Simulator, CAD portfolio, and showroom appointment flow.</p>
+          <ul class="card-features">
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Interactive Daylight &amp; Cat 5 Storm toggle</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> 8 CAD blueprint hover project showcase</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Standalone contact.html showroom page</li>
+          </ul>
+          <div class="card-footer">
+            <a href="./01-architectural-luxury/index.html" class="card-btn card-btn-primary">Launch Site →</a>
+            <a href="./01-architectural-luxury/index.html" target="_blank" rel="noopener" class="card-btn">New Tab ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Interactive Design Studio -->
+      <div class="site-card" data-category="architectural">
+        <div class="card-visual card-visual-gradient-2">
+          <div class="card-tag tag-architectural">Interactive Studio</div>
+          <div class="card-mockup-badge">DESIGN STUDIO</div>
+          <div class="card-folder-badge">📁 02-design-studio</div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Design Studio Configurator</h3>
+          <div class="card-subtitle">5-Step Floor Plan &amp; Opening Visualizer</div>
+          <p class="card-desc">Interactive product visualizer allowing architects and homeowners to configure window openings, frame profiles, glazing tints, finishes, and simulate morning vs storm light.</p>
+          <ul class="card-features">
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Step-by-step opening placement visualizer</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Dynamic live spec &amp; estimate summary panel</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Frame color and solar heat gain simulator</li>
+          </ul>
+          <div class="card-footer">
+            <a href="./02-design-studio/index.html" class="card-btn card-btn-primary">Launch Studio →</a>
+            <a href="./02-design-studio/index.html" target="_blank" rel="noopener" class="card-btn">New Tab ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Variation 1: Insurance Angle -->
+      <div class="site-card" data-category="variation">
+        <div class="card-visual card-visual-gradient-4">
+          <div class="card-tag tag-variation">Angle 1 &middot; Insurance</div>
+          <div class="card-mockup-badge">WIND MITIGATION</div>
+          <div class="card-folder-badge">📁 03-variation-insurance</div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Variation 1: Insurance Credits</h3>
+          <div class="card-subtitle">Homeowners Premium Reduction Strategy</div>
+          <p class="card-desc">Targets homeowners facing surging South Florida insurance rates. Explains OIR-B1-1802 wind mitigation inspections, carrier discounts, and My Safe Florida Home grants.</p>
+          <ul class="card-features">
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Detailed OIR-B1-1802 inspection checklist</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Florida DFS official credit guidelines &amp; MSFH</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> High-converting credit audit CTA</li>
+          </ul>
+          <div class="card-footer">
+            <a href="./03-variation-insurance/index.html" class="card-btn card-btn-primary">Launch Site →</a>
+            <a href="./03-variation-insurance/index.html" target="_blank" rel="noopener" class="card-btn">New Tab ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Variation 2: Cost Angle -->
+      <div class="site-card" data-category="variation">
+        <div class="card-visual card-visual-gradient-5">
+          <div class="card-tag tag-variation">Angle 2 &middot; Pricing</div>
+          <div class="card-mockup-badge">TRANSPARENT COST</div>
+          <div class="card-folder-badge">📁 04-variation-cost</div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Variation 2: Transparent Cost</h3>
+          <div class="card-subtitle">Real Pricing Drivers &amp; Planning Ranges</div>
+          <p class="card-desc">Demystifies impact window pricing with honest budget tiers ($12k to $45k+), breakdown of labor vs glass costs, PACE financing, and contractor quote comparison rubrics.</p>
+          <ul class="card-features">
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Full complete-quote checklist to avoid surprises</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Ygrene &amp; PACE property-tax financing guide</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Per-opening sizing and price formula</li>
+          </ul>
+          <div class="card-footer">
+            <a href="./04-variation-cost/index.html" class="card-btn card-btn-primary">Launch Site →</a>
+            <a href="./04-variation-cost/index.html" target="_blank" rel="noopener" class="card-btn">New Tab ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Variation 3: Protection Angle -->
+      <div class="site-card" data-category="variation">
+        <div class="card-visual card-visual-gradient-3">
+          <div class="card-tag tag-variation">Angle 3 &middot; Storm Tech</div>
+          <div class="card-mockup-badge">HVHZ PROTECTION</div>
+          <div class="card-folder-badge">📁 05-variation-protection</div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Variation 3: Storm Protection</h3>
+          <div class="card-subtitle">Engineering &amp; Code Compliance</div>
+          <p class="card-desc">A technical, engineering-first angle. Focuses on Miami-Dade High Velocity Hurricane Zone (HVHZ) requirements, Large Missile D testing, NOA verification, and accordion shutter comparison.</p>
+          <ul class="card-features">
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> 2x4 lumber projectile cannon testing standards</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Positive &amp; negative design pressure explanation</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Shutters vs Impact laminated glass breakdown</li>
+          </ul>
+          <div class="card-footer">
+            <a href="./05-variation-protection/index.html" class="card-btn card-btn-primary">Launch Site →</a>
+            <a href="./05-variation-protection/index.html" target="_blank" rel="noopener" class="card-btn">New Tab ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Variation 4: Answer-First Editorial (Home B) -->
+      <div class="site-card" data-category="variation">
+        <div class="card-visual card-visual-gradient-2">
+          <div class="card-tag tag-variation">Angle 4 &middot; SEO / AEO</div>
+          <div class="card-mockup-badge">ANSWER-FIRST (HOME B)</div>
+          <div class="card-folder-badge">📁 06-variation-editorial-b</div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Variation 4: Answer-First Editorial</h3>
+          <div class="card-subtitle">Home B &middot; Maximum Search &amp; AI Citation Depth</div>
+          <p class="card-desc">Engineered to dominate Google search and AI engines (ChatGPT, Claude, Perplexity). Question-led headings, numbered chapter table of contents, and immediate factual answers.</p>
+          <ul class="card-features">
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Numbered navigation jump-links</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Quick-answer summary boxes atop each chapter</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Full structured FAQ accordion system</li>
+          </ul>
+          <div class="card-footer">
+            <a href="./06-variation-editorial-b/index.html" class="card-btn card-btn-primary">Launch Site →</a>
+            <a href="./06-variation-editorial-b/index.html" target="_blank" rel="noopener" class="card-btn">New Tab ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. Variation 5: Premium Dark (Home A) -->
+      <div class="site-card" data-category="variation">
+        <div class="card-visual card-visual-gradient-1">
+          <div class="card-tag tag-variation">Angle 5 &middot; Premium</div>
+          <div class="card-mockup-badge">DARK LUXURY (HOME A)</div>
+          <div class="card-folder-badge">📁 07-variation-premium-dark</div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Variation 5: Premium Dark Aesthetic</h3>
+          <div class="card-subtitle">Home A &middot; High Contrast &amp; Bold Typography</div>
+          <p class="card-desc">Striking dark background layout with bold typography, high-contrast red accents, manufacturer trust logos (PGT, ES Windows, CGI), and executive-level positioning.</p>
+          <ul class="card-features">
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> High-contrast black and crimson styling</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Integrated contractor credential callouts</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Streamlined quote consultation forms</li>
+          </ul>
+          <div class="card-footer">
+            <a href="./07-variation-premium-dark/index.html" class="card-btn card-btn-primary">Launch Site →</a>
+            <a href="./07-variation-premium-dark/index.html" target="_blank" rel="noopener" class="card-btn">New Tab ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. Variation 6: Storm Conversion (Home C) -->
+      <div class="site-card" data-category="variation">
+        <div class="card-visual card-visual-gradient-3">
+          <div class="card-tag tag-variation">Angle 6 &middot; Performance</div>
+          <div class="card-mockup-badge">STORM CONVERSION (HOME C)</div>
+          <div class="card-folder-badge">📁 08-variation-storm-conversion</div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Variation 6: Rapid Storm Conversion</h3>
+          <div class="card-subtitle">Home C &middot; Lead Generation Focused</div>
+          <p class="card-desc">Laser-focused on immediate lead capture for homeowners seeking urgent hurricane protection. Prominent multi-step estimate calculator, instant phone triggers, and urgency cues.</p>
+          <ul class="card-features">
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Above-the-fold estimate request module</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Emergency storm readiness guarantees</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Optimized for mobile click-to-call conversion</li>
+          </ul>
+          <div class="card-footer">
+            <a href="./08-variation-storm-conversion/index.html" class="card-btn card-btn-primary">Launch Site →</a>
+            <a href="./08-variation-storm-conversion/index.html" target="_blank" rel="noopener" class="card-btn">New Tab ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. Product Deep Dive -->
+      <div class="site-card" data-category="tools">
+        <div class="card-visual card-visual-gradient-2">
+          <div class="card-tag tag-tool">Product Specification</div>
+          <div class="card-mockup-badge">SINGLE-HUNG IMPACT</div>
+          <div class="card-folder-badge">📁 09-product-single-hung</div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Single-Hung Impact Window</h3>
+          <div class="card-subtitle">Product Deep-Dive &amp; NOA Specifications</div>
+          <p class="card-desc">Template for product-level pages. Detailed specification matrix, thermal ratings, glass configurations (laminated vs insulated-laminated), installation steps, and comparisons.</p>
+          <ul class="card-features">
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Detailed NOA &amp; Design Pressure spec table</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Step-by-step installation timeline checklist</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Direct brand comparisons (PGT vs ESW vs CGI)</li>
+          </ul>
+          <div class="card-footer">
+            <a href="./09-product-single-hung/index.html" class="card-btn card-btn-primary">Launch Product →</a>
+            <a href="./09-product-single-hung/index.html" target="_blank" rel="noopener" class="card-btn">New Tab ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10. Design System Styleguide -->
+      <div class="site-card" data-category="tools">
+        <div class="card-visual card-visual-gradient-5">
+          <div class="card-tag tag-system">Component Library</div>
+          <div class="card-mockup-badge">LIVING STYLEGUIDE</div>
+          <div class="card-folder-badge">📁 10-component-styleguide</div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Design System &amp; Styleguide</h3>
+          <div class="card-subtitle">Living UI Component Master Library</div>
+          <p class="card-desc">Complete interactive component library for the entire web project: color tokens, typography scales, buttons, form inputs, trust badges, FAQ dropdowns, modals, and tables.</p>
+          <ul class="card-features">
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Complete color palette &amp; typographic hierarchy</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Accessible form inputs, buttons, and state indicators</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Ready for Elementor or headless Astro build</li>
+          </ul>
+          <div class="card-footer">
+            <a href="./10-component-styleguide/index.html" class="card-btn card-btn-primary">Launch Styleguide →</a>
+            <a href="./10-component-styleguide/index.html" target="_blank" rel="noopener" class="card-btn">New Tab ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11. Codex Concept D -->
+      <div class="site-card" data-category="architectural">
+        <div class="card-visual card-visual-gradient-1">
+          <div class="card-tag tag-architectural">Architectural Concept</div>
+          <div class="card-mockup-badge">CONCEPT D (CODEX)</div>
+          <div class="card-folder-badge">📁 11-architectural-concept-d</div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Architectural Concept D</h3>
+          <div class="card-subtitle">Cinematic Editorial &middot; Engineering Concept</div>
+          <p class="card-desc">An elegant, modern architectural concept emphasizing engineered precision, ES Windows / Tecnoglass systems, certified contractor standards, and transparent project delivery.</p>
+          <ul class="card-features">
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Clean editorial layout with project case cards</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Verified South Florida engineering specs</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Direct quote request integration</li>
+          </ul>
+          <div class="card-footer">
+            <a href="./11-architectural-concept-d/index.html" class="card-btn card-btn-primary">Launch Concept →</a>
+            <a href="./11-architectural-concept-d/index.html" target="_blank" rel="noopener" class="card-btn">New Tab ↗</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer info -->
+    <footer class="showcase-footer">
+      <p>Broward Impact Window &amp; Door, Inc. &middot; 1954 Tigertail Blvd, Dania Beach, FL 33004 &middot; Florida License CGC 1514968</p>
+      <p style="margin-top:6px;">All 11 folders are 100% self-contained and ready for GitHub Pages, Netlify Drop, or Cloudflare upload.</p>
+    </footer>
+
+  </div>
+
+  <script>
+    function filterCards(category) {
+      // Update buttons
+      const buttons = document.querySelectorAll('.filter-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      // Filter cards
+      const cards = document.querySelectorAll('.site-card');
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

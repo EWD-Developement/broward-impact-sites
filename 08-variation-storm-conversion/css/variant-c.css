@@ -1,0 +1,27 @@
+/* Direction C: Storm / conversion-first. Form in the hero, dense, urgent. */
+.dir-badge{position:fixed;right:12px;top:48px;left:auto;bottom:auto;z-index:90;background:var(--ink);color:#fff;font:500 11px var(--font-mono);padding:8px 12px;border-radius:99px}.dir-badge a{color:#fff;margin-left:6px}
+.c-hero{background:radial-gradient(900px 500px at 12% 0%,rgba(203,11,21,.45),transparent 60%),var(--ink-d);color:#fff;padding:56px 0 72px}
+.c-hero__grid{display:grid;gap:40px;align-items:start}
+@media(min-width:960px){.c-hero__grid{grid-template-columns:minmax(0,1fr) minmax(0,520px);gap:64px}}
+.c-hero h1{font-size:clamp(2.5rem,1.4rem + 5vw,5.75rem);color:#fff}
+.c-hero h1 em{font-style:normal;color:#FF5A62}
+.c-answer{font-size:var(--t-lg);color:#E9E3DD;max-width:46ch}
+.c-rating{margin:28px 0}
+.c-hero .hero__ctas{display:flex;flex-wrap:wrap;gap:12px}
+.c-form .form{box-shadow:0 30px 70px -20px rgba(0,0,0,.6)}
+.c-strip{background:var(--red);color:#fff}
+.c-strip .wrap{display:flex;flex-wrap:wrap;gap:8px 36px;justify-content:space-between;padding-block:18px;font:500 var(--t-sm) var(--font-head);letter-spacing:.1em;text-transform:uppercase}
+.c-gauge{display:grid;gap:48px;align-items:center}
+@media(min-width:900px){.c-gauge{grid-template-columns:1fr 1fr}}
+.c-gauge__panel{background:var(--card);border:1px solid var(--line);border-radius:var(--r-3);padding:32px;box-shadow:var(--sh-2)}
+.c-tiles{display:grid;gap:16px;margin-top:32px}
+@media(min-width:760px){.c-tiles{grid-template-columns:repeat(3,1fr)}}
+.c-tiles a{position:relative;display:block;border-radius:var(--r-3);overflow:hidden;text-decoration:none;color:#fff}
+.c-tiles .ph{--ar:4/5;border-radius:0}
+.c-tiles b{position:absolute;left:0;right:0;bottom:0;padding:48px 22px 20px;background:linear-gradient(transparent,rgba(15,14,13,.88));font:600 var(--t-xl) var(--font-head);text-transform:uppercase;letter-spacing:.04em}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chips a{font:600 var(--t-sm) var(--font-head);letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--ink);background:var(--card);border:1px solid var(--line-strong);border-radius:99px;padding:12px 20px;min-height:44px;display:inline-flex;align-items:center}.chips a:hover{background:var(--ink);color:#fff}
+.c-final{background:var(--red);color:#fff;text-align:center;padding:80px 0}.c-final h2{color:#fff;font-size:var(--t-3xl);margin-inline:auto}
+.c-final .btn:not([style]){background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.6)}
+
+.c-hero .eyebrow{color:#E9E3DD}

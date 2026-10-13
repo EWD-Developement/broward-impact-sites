@@ -1,0 +1,1197 @@
+/* ==========================================================================
+   BROWARD IMPACT — ARCHITECTURAL LUXURY DESIGN SYSTEM
+   Faithfully inspired by Vira Door & Window (virawd.com)
+   Obsidian, Silica, Champagne Amber, Monospace Technical Blueprint Aesthetics
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
+
+:root {
+  --obsidian: #0e0f11;
+  --obsidian-surface: #16171a;
+  --obsidian-border: rgba(255, 255, 255, 0.12);
+  --silica: #f4f7f5;
+  --silica-surface: #ffffff;
+  --silica-muted: #e6eae7;
+  --silica-border: #0e0f11;
+  --amber: #d4af37;
+  --amber-glow: rgba(212, 175, 55, 0.25);
+  --silver: #a3a3a3;
+  --coral-accent: #cb0b15; /* Broward Impact heritage red accent */
+  
+  --font-heading: 'Spectral', Georgia, serif;
+  --font-display: 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Spectral', Georgia, serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Reset & Box Sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--obsidian);
+  color: var(--silica);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: var(--silica);
+  color: var(--obsidian);
+  line-height: 1.6;
+}
+
+/* Typography Utility Classes */
+.font-heading {
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+}
+
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.03em;
+  font-weight: 700;
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.font-mono-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 500;
+}
+
+/* Color Utilities */
+.bg-obsidian { background-color: var(--obsidian) !important; color: var(--silica) !important; }
+.bg-obsidian-surface { background-color: var(--obsidian-surface) !important; }
+.bg-silica { background-color: var(--silica) !important; color: var(--obsidian) !important; }
+.text-obsidian { color: var(--obsidian) !important; }
+.text-silica { color: var(--silica) !important; }
+.text-amber { color: var(--amber) !important; }
+.text-silver { color: var(--silver) !important; }
+.border-obsidian { border-color: var(--obsidian) !important; }
+.border-silica { border-color: var(--silica) !important; }
+.border-amber { border-color: var(--amber) !important; }
+
+/* Interactive Glass Cursor */
+.glass-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  border: 1px solid var(--amber);
+  background-color: var(--amber);
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+  transition: width 0.28s var(--ease-out),
+              height 0.28s var(--ease-out),
+              background-color 0.25s,
+              backdrop-filter 0.25s,
+              border-color 0.25s,
+              opacity 0.2s;
+  display: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .glass-cursor {
+    display: block;
+  }
+}
+
+.glass-cursor.is-magnify {
+  width: 90px;
+  height: 90px;
+  background-color: rgba(244, 247, 245, 0.08);
+  border-color: var(--amber);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  mix-blend-mode: normal;
+}
+
+/* Header & Navbar */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  transition: background-color 0.4s var(--ease-out),
+              border-color 0.4s var(--ease-out),
+              color 0.4s var(--ease-out),
+              backdrop-filter 0.4s;
+}
+
+.site-header.scrolled {
+  background-color: rgba(244, 247, 245, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--obsidian);
+  color: var(--obsidian);
+}
+
+.site-header.transparent-mode {
+  background-color: transparent;
+  color: var(--silica);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  height: 4.5rem;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .header-container {
+    padding: 0 3rem;
+  }
+}
+
+.logo-brand {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: inherit;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.logo-brand .badge-tag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  padding: 2px 6px;
+  border: 1px solid currentColor;
+  opacity: 0.7;
+}
+
+.nav-links {
+  display: none;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+@media (min-width: 900px) {
+  .nav-links {
+    display: flex;
+  }
+}
+
+.nav-link {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.5rem 0.9rem;
+  text-decoration: none;
+  color: inherit;
+  opacity: 0.8;
+  transition: opacity 0.2s, color 0.2s;
+}
+
+.nav-link:hover {
+  opacity: 1;
+  color: var(--amber);
+}
+
+.nav-cta-btn {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.6rem 1.25rem;
+  text-decoration: none;
+  border: 1px solid var(--amber);
+  color: var(--amber);
+  background: transparent;
+  transition: all 0.25s var(--ease-out);
+}
+
+.nav-cta-btn:hover {
+  background: var(--amber);
+  color: var(--obsidian);
+}
+
+/* Dropdown menu */
+.nav-dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 14rem;
+  background-color: var(--silica);
+  border: 1px solid var(--obsidian);
+  box-shadow: 0 16px 32px rgba(0,0,0,0.15);
+  display: none;
+  flex-direction: column;
+  z-index: 50;
+}
+
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown:focus-within .dropdown-menu {
+  display: flex;
+}
+
+.dropdown-item {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.85rem 1.25rem;
+  text-decoration: none;
+  color: var(--obsidian);
+  border-bottom: 1px solid rgba(14, 15, 17, 0.1);
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.dropdown-item:hover {
+  background-color: rgba(14, 15, 17, 0.05);
+  color: var(--amber);
+}
+
+/* ==========================================================================
+   HERO SECTION: SHOWSTOPPING X-RAY BLUEPRINT SPOTLIGHT
+   ========================================================================== */
+.hero-section {
+  position: relative;
+  height: 100svh;
+  min-height: 680px;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--obsidian);
+  color: var(--silica);
+}
+
+.hero-media-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-media-layer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.72;
+}
+
+.hero-overlay-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(14,15,17,0.45) 0%, rgba(14,15,17,0.25) 50%, rgba(14,15,17,0.85) 100%);
+  pointer-events: none;
+}
+
+/* Blueprint CAD Wireframe Revealed via Mouse Mask */
+.hero-blueprint-mask {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s var(--ease-out);
+  -webkit-mask-image: radial-gradient(circle 200px at var(--spotlight-x, 50%) var(--spotlight-y, 50%), black 0%, transparent 100%);
+  mask-image: radial-gradient(circle 200px at var(--spotlight-x, 50%) var(--spotlight-y, 50%), black 0%, transparent 100%);
+}
+
+.hero-blueprint-mask.active {
+  opacity: 1;
+}
+
+.hero-blueprint-bg {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(10, 11, 13, 0.94);
+}
+
+.hero-blueprint-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  color: var(--amber);
+}
+
+/* Hero Content Box */
+.hero-content-wrap {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 7rem 1.5rem 2.5rem;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .hero-content-wrap {
+    padding: 8rem 3rem 3rem;
+  }
+}
+
+.hero-center-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: auto 0;
+}
+
+.hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(3.2rem, 10vw, 7.8rem);
+  line-height: 0.88;
+  font-weight: 400;
+  color: var(--silica);
+  text-transform: none;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--amber);
+}
+
+.hero-subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-style: italic;
+  color: rgba(244, 247, 245, 0.85);
+  max-width: 44rem;
+  margin-top: 2rem;
+  line-height: 1.55;
+}
+
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2.75rem;
+  width: 100%;
+  max-width: 34rem;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 640px) {
+  .hero-actions {
+    flex-direction: row;
+    width: auto;
+  }
+}
+
+.btn-primary-amber {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background-color: var(--amber);
+  color: var(--obsidian);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 1.1rem 2.2rem;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.25s var(--ease-out);
+  border: 1px solid var(--amber);
+}
+
+.btn-primary-amber:hover {
+  background-color: var(--silica);
+  border-color: var(--silica);
+  color: var(--obsidian);
+}
+
+.btn-outline-silica {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background: transparent;
+  color: var(--silica);
+  border: 1px solid rgba(244, 247, 245, 0.4);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 1.1rem 2.2rem;
+  text-decoration: none;
+  transition: all 0.25s var(--ease-out);
+}
+
+.btn-outline-silica:hover {
+  border-color: var(--amber);
+  color: var(--amber);
+}
+
+.hero-footer-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: rgba(244, 247, 245, 0.65);
+}
+
+@media (min-width: 768px) {
+  .hero-footer-bar {
+    flex-direction: row;
+    align-items: flex-end;
+  }
+}
+
+.scroll-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(244, 247, 245, 0.8);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.scroll-indicator:hover {
+  color: var(--amber);
+}
+
+/* ==========================================================================
+   01 / THE STUDIO & ENGINEERING SECTION
+   ========================================================================== */
+.studio-section {
+  background-color: var(--silica);
+  color: var(--obsidian);
+  border-top: 1px solid var(--obsidian);
+}
+
+.studio-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 860px) {
+  .studio-grid {
+    grid-template-columns: 7fr 5fr;
+  }
+}
+
+.studio-visual {
+  position: relative;
+  min-height: 60svh;
+  overflow: hidden;
+  border-right: 1px solid var(--obsidian);
+}
+
+@media (min-width: 860px) {
+  .studio-visual {
+    height: 100vh;
+  }
+}
+
+.studio-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.studio-fig-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem 2rem;
+  background: linear-gradient(to top, rgba(14, 15, 17, 0.8), transparent);
+  color: rgba(244, 247, 245, 0.9);
+}
+
+.studio-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem 1.75rem;
+  gap: 2.5rem;
+}
+
+@media (min-width: 860px) {
+  .studio-content {
+    padding: 5rem 4rem;
+  }
+}
+
+.section-tag {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(14, 15, 17, 0.5);
+}
+
+.studio-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.8rem, 4.5vw, 4.2rem);
+  line-height: 1.05;
+  color: var(--obsidian);
+}
+
+.studio-title span {
+  color: rgba(14, 15, 17, 0.4);
+}
+
+.studio-body {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: rgba(14, 15, 17, 0.85);
+}
+
+.benchmark-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 1.35rem 0;
+  border-bottom: 1px solid var(--obsidian);
+}
+
+.benchmark-row:first-child {
+  border-top: 1px solid var(--obsidian);
+}
+
+.benchmark-row .k {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  color: var(--obsidian);
+}
+
+.benchmark-row .v {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: rgba(14, 15, 17, 0.6);
+  text-align: right;
+  letter-spacing: 0.08em;
+}
+
+/* ==========================================================================
+   02 / PORTFOLIO & SELECTED PROJECTS
+   ========================================================================== */
+.portfolio-section {
+  background-color: var(--obsidian);
+  color: var(--silica);
+  border-top: 1px solid var(--obsidian);
+}
+
+.portfolio-header {
+  padding: 3rem 1.5rem 2rem;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .portfolio-header {
+    padding: 5rem 3rem 3rem;
+  }
+}
+
+.portfolio-header-flex {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(244, 247, 245, 0.2);
+  padding-bottom: 2rem;
+}
+
+.portfolio-title {
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  line-height: 0.95;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1px;
+  background-color: rgba(244, 247, 245, 0.15);
+  border-top: 1px solid rgba(244, 247, 245, 0.15);
+  border-bottom: 1px solid rgba(244, 247, 245, 0.15);
+}
+
+@media (min-width: 768px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.portfolio-card {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--obsidian);
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.portfolio-card.span-2-row {
+  grid-row: span 2;
+}
+
+.portfolio-media {
+  position: relative;
+  width: 100%;
+  height: 55svh;
+  overflow: hidden;
+}
+
+.portfolio-card.span-2-row .portfolio-media {
+  height: 70svh;
+}
+
+@media (min-width: 768px) {
+  .portfolio-card.span-2-row .portfolio-media {
+    height: 100%;
+    min-height: 600px;
+  }
+}
+
+.portfolio-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s var(--ease-out);
+}
+
+.portfolio-card:hover .portfolio-media img {
+  transform: scale(0.96);
+}
+
+/* CAD Blueprint Grid SVG Overlay on Card Hover */
+.portfolio-cad-grid {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  color: var(--amber);
+  opacity: 0;
+  transition: opacity 0.5s var(--ease-out);
+  pointer-events: none;
+}
+
+.portfolio-card:hover .portfolio-cad-grid {
+  opacity: 0.9;
+}
+
+.portfolio-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--obsidian) 0%, rgba(14,15,17,0.1) 60%, transparent 100%);
+}
+
+.portfolio-meta {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.75rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.portfolio-card-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 2vw, 2.1rem);
+  color: var(--silica);
+  transition: color 0.3s;
+}
+
+.portfolio-card:hover .portfolio-card-title {
+  color: var(--amber);
+}
+
+/* ==========================================================================
+   03 & 04 / BLUEPRINT CATALOG & INTERACTIVE LIGHT/STORM SIMULATOR
+   ========================================================================== */
+.catalog-section {
+  background-color: var(--silica);
+  color: var(--obsidian);
+  border-top: 1px solid var(--obsidian);
+  scroll-margin-top: 4.5rem;
+}
+
+.catalog-header {
+  padding: 3rem 1.5rem;
+  border-bottom: 1px solid var(--obsidian);
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .catalog-header {
+    padding: 4.5rem 3rem;
+  }
+}
+
+.catalog-title {
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  line-height: 0.95;
+  margin-top: 0.75rem;
+}
+
+.catalog-title span {
+  color: rgba(14, 15, 17, 0.4);
+}
+
+.catalog-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 900px) {
+  .catalog-grid {
+    grid-template-columns: 5fr 7fr;
+  }
+}
+
+.catalog-visual-col {
+  position: relative;
+  border-right: 1px solid var(--obsidian);
+  min-height: 55svh;
+}
+
+@media (min-width: 900px) {
+  .catalog-visual-col {
+    position: sticky;
+    top: 4.5rem;
+    height: calc(100vh - 4.5rem);
+  }
+}
+
+.catalog-img-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.catalog-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: filter 0.8s var(--ease-out);
+}
+
+/* Daylight & Storm Simulator Light Tint Overlays */
+.light-tint-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  transition: opacity 0.8s var(--ease-out), background 0.8s var(--ease-out);
+}
+
+.catalog-visual-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  background: linear-gradient(to top, rgba(14,15,17,0.7), transparent);
+  color: var(--silica);
+}
+
+/* Specs Tiles Grid */
+.specs-tiles-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  border-bottom: 1px solid var(--obsidian);
+}
+
+@media (min-width: 600px) {
+  .specs-tiles-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.spec-tile {
+  padding: 2.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--obsidian);
+}
+
+@media (min-width: 600px) {
+  .spec-tile:nth-child(odd) {
+    border-right: 1px solid var(--obsidian);
+  }
+}
+
+.spec-tile .val {
+  font-family: var(--font-heading);
+  font-size: clamp(2.8rem, 4vw, 4.2rem);
+  line-height: 1;
+  color: var(--obsidian);
+}
+
+/* Light / Storm Simulator Controls */
+.simulator-panel {
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .simulator-panel {
+    padding: 3.5rem 4rem;
+  }
+}
+
+.sim-buttons-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.sim-btn {
+  flex: 1;
+  padding: 1rem 0.5rem;
+  background: transparent;
+  border: 1px solid var(--obsidian);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--obsidian);
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.sim-btn.active {
+  background-color: var(--obsidian);
+  color: var(--amber);
+}
+
+.sim-btn:hover:not(.active) {
+  background-color: rgba(14, 15, 17, 0.05);
+}
+
+/* Operation Tabs */
+.operation-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.op-tab-btn {
+  padding: 0.75rem 1.25rem;
+  border: 1px solid var(--obsidian);
+  background: transparent;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.op-tab-btn.active {
+  background-color: var(--obsidian);
+  color: var(--amber);
+}
+
+/* ==========================================================================
+   04 / CERTIFICATIONS & STANDARDS SECTION
+   ========================================================================== */
+.standards-section {
+  background-color: var(--silica);
+  color: var(--obsidian);
+  border-top: 1px solid var(--obsidian);
+}
+
+.standards-triad {
+  display: grid;
+  grid-template-columns: 1fr;
+  border-bottom: 1px solid var(--obsidian);
+}
+
+@media (min-width: 860px) {
+  .standards-triad {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.triad-col {
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  border-bottom: 1px solid var(--obsidian);
+}
+
+@media (min-width: 860px) {
+  .triad-col {
+    border-bottom: none;
+    border-right: 1px solid var(--obsidian);
+    padding: 4rem 3rem;
+  }
+  .triad-col:last-child {
+    border-right: none;
+  }
+}
+
+.cert-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background-color: var(--obsidian);
+  border: 1px solid var(--obsidian);
+  margin-top: 2rem;
+}
+
+@media (min-width: 768px) {
+  .cert-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.cert-tile {
+  background-color: var(--silica);
+  padding: 2.25rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 180px;
+}
+
+.cert-code {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  color: var(--obsidian);
+}
+
+/* ==========================================================================
+   05 / BEGIN CONSULTATION CTA SECTION
+   ========================================================================== */
+.cta-section {
+  background-color: var(--obsidian);
+  color: var(--silica);
+  border-top: 1px solid var(--obsidian);
+  padding: 5rem 1.5rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .cta-section {
+    padding: 8rem 3rem;
+  }
+}
+
+.cta-container {
+  max-width: 50rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* ==========================================================================
+   FOOTER: ULTRA-LUXURY ARCHITECTURAL TYPOGRAPHY WATERMARK
+   ========================================================================== */
+.site-footer {
+  background-color: var(--obsidian);
+  color: var(--silica);
+  border-top: 1px solid var(--obsidian);
+  overflow: hidden;
+  position: relative;
+}
+
+.footer-columns {
+  display: grid;
+  grid-template-columns: 1fr;
+  border-bottom: 1px solid rgba(244, 247, 245, 0.15);
+}
+
+@media (min-width: 768px) {
+  .footer-columns {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.footer-col {
+  padding: 3rem 2rem;
+  border-bottom: 1px solid rgba(244, 247, 245, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .footer-col {
+    border-bottom: none;
+    border-right: 1px solid rgba(244, 247, 245, 0.15);
+    padding: 4rem 3rem;
+  }
+  .footer-col:last-child {
+    border-right: none;
+  }
+}
+
+.footer-watermark {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+  line-height: 0.8;
+  transform: translateY(18%);
+  user-select: none;
+  pointer-events: none;
+}
+
+.footer-watermark span {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(5rem, 18vw, 17rem);
+  color: rgba(244, 247, 245, 0.04);
+  letter-spacing: -0.05em;
+  white-space: nowrap;
+}
+
+.footer-sub-bar {
+  border-top: 1px solid rgba(244, 247, 245, 0.15);
+  padding: 1.75rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: rgba(244, 247, 245, 0.45);
+}
+
+@media (min-width: 768px) {
+  .footer-sub-bar {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1.75rem 3rem;
+  }
+}
+
+/* ==========================================================================
+   DESIGN STUDIO CONFIGURATOR INTERACTIVE COMPONENTS
+   ========================================================================== */
+.studio-stepper-bar {
+  display: flex;
+  border-bottom: 1px solid var(--obsidian);
+  background-color: var(--silica);
+  overflow-x: auto;
+  position: sticky;
+  top: 4.5rem;
+  z-index: 30;
+}
+
+.stepper-step-item {
+  flex: 1;
+  min-width: 140px;
+  padding: 1rem 1.25rem;
+  border-right: 1px solid var(--obsidian);
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  cursor: pointer;
+  background: transparent;
+  border-top: none;
+  border-bottom: none;
+  text-align: left;
+  transition: background-color 0.2s;
+}
+
+.stepper-step-item.active {
+  background-color: var(--obsidian);
+  color: var(--amber);
+}
+
+.stepper-step-item.active .step-num {
+  color: var(--amber);
+}
+
+.stepper-step-item:hover:not(.active) {
+  background-color: rgba(14, 15, 17, 0.04);
+}
+
+.upload-dropzone {
+  border: 1px dashed var(--obsidian);
+  padding: 4rem 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s;
+  background-color: rgba(244, 247, 245, 0.5);
+}
+
+.upload-dropzone.drag-active {
+  border-color: var(--amber);
+  background-color: rgba(212, 175, 55, 0.08);
+}
+
+.spec-selector-btn {
+  padding: 0.85rem 1.25rem;
+  border: 1px solid var(--obsidian);
+  background: transparent;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.spec-selector-btn.selected {
+  background-color: var(--obsidian);
+  color: var(--amber);
+}
+
+.spec-swatch {
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgba(0,0,0,0.2);
+  display: inline-block;
+  margin-right: 8px;
+  vertical-align: middle;
+}

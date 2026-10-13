@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design System Styleguide | Broward Impact</title>
+<meta name="description" content="Living styleguide for the Broward Impact Window & Door site rebuild: tokens and components.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="canonical" href="https://www.browardimpact.com/design/styleguide/">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="icon" href="img/logo.webp" type="image/webp">
+<link rel="stylesheet" href="css/broward.css">
+</head>
+<body>
+<nav aria-label="Skip links"><a class="skip" href="#main">Skip to content</a></nav>
+
+<div class="topbar" role="region" aria-label="Business details"><div class="wrap"><span>Dania Beach, FL · Lic. CGC 1514968</span><span><a href="tel:+19549220606">Call 954.922.0606</a> · <a href="sms:+19542805505">Text 954-280-5505</a></span></div></div>
+<header class="hdr">
+  <div class="wrap">
+    <a class="hdr__logo" href="/" aria-label="Broward Impact Window and Door home"><img src="img/logo.webp" width="112" height="44" alt="Broward Impact Window &amp; Door" style="object-fit:contain"></a>
+    <ul class="nav">
+      <li><a href="/impact-windows/">Windows</a>
+        <div class="mega"><div class="wrap">
+          <div><span class="mega__label">Impact windows</span><ul><li><a href="/impact-windows/single-hung/">Single-hung</a></li><li><a href="/impact-windows/casement/">Casement</a></li><li><a href="/impact-windows/horizontal-roller/">Horizontal roller</a></li><li><a href="/impact-windows/picture-fixed/">Picture / fixed</a></li><li><a href="/impact-windows/">All impact windows</a></li></ul></div>
+          <div><span class="mega__label">Impact doors</span><ul><li><a href="/impact-doors/entry-doors/">Entry doors</a></li><li><a href="/impact-doors/sliding-glass-doors/">Sliding glass</a></li><li><a href="/impact-doors/french-doors/">French doors</a></li><li><a href="/impact-doors/">All impact doors</a></li></ul></div>
+          <div><span class="mega__label">Brands</span><ul><li><a href="/eswindows-impact-windows-manufacturer/">ES Windows</a></li><li><a href="/pgt-impact-windows-manufacturers/">PGT</a></li><li><a href="/marvin-impact-windows-manufacturer/">Marvin</a></li><li><a href="/florida-product-approval-noa-impact-windows/">NOA &amp; approvals</a></li></ul></div>
+          <div><span class="mega__label">Other</span><ul><li><a href="/replacement-windows/">Replacement windows</a></li><li><a href="/commercial/">Commercial</a></li></ul></div>
+        </div></div></li>
+      <li><a href="/impact-windows-cost-broward-county/">Cost</a></li>
+      <li><a href="/financing/">Financing</a>
+        <div class="mega"><div class="wrap">
+          <div><span class="mega__label">Pay for it</span><ul><li><a href="/financing/">Financing options</a></li><li><a href="/pace-financing/">PACE financing</a></li></ul></div>
+          <div><span class="mega__label">Programs</span><ul><li><a href="/my-safe-florida-home-program-broward/">My Safe Florida Home</a></li><li><a href="/resources/impact-windows-insurance-discount-florida/">Insurance discounts</a></li></ul></div>
+        </div></div></li>
+      <li><a href="/location/">Locations</a>
+        <div class="mega"><div class="wrap">
+          <div><span class="mega__label">Counties</span><ul><li><a href="/broward-county-impact-windows/">Broward</a></li><li><a href="/palm-beach-county-impact-windows/">Palm Beach</a></li><li><a href="/miami-dade-county-impact-windows-code-compliant-protection/">Miami-Dade</a></li></ul></div>
+          <div><span class="mega__label">Broward cities</span><ul><li><a href="/location/fort-lauderdale-impact-windows/">Fort Lauderdale</a></li><li><a href="/location/dania-beach-impact-windows/">Dania Beach</a></li><li><a href="/location/coral-springs-impact-windows/">Coral Springs</a></li><li><a href="/location/">All locations</a></li></ul></div>
+        </div></div></li>
+      <li><a href="/showroom/">Showroom</a></li>
+      <li><a href="/resources/">Resources</a></li>
+    </ul>
+    <div class="hdr__cta"><a class="hdr__phone" href="tel:+19549220606">954.922.0606</a><a class="btn btn--primary" href="#estimate">Free In-Home Estimate <span class="arr" aria-hidden="true">→</span></a><button class="menu-btn" type="button" aria-expanded="false" aria-controls="mnav">MENU</button></div>
+  </div>
+  <nav class="mnav" id="mnav" aria-label="Mobile"><a href="/impact-windows/">Windows</a><a href="/impact-doors/">Doors</a><a href="/impact-windows-cost-broward-county/">Cost</a><a href="/financing/">Financing</a><a href="/location/">Locations</a><a href="/showroom/">Showroom</a><a href="/resources/">Resources</a></nav>
+</header>
+
+<main id="main">
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/design/">Design</a></li><li aria-current="page">Styleguide</li></ol></nav>
+</div>
+
+<!-- INTRO -->
+<section class="hero">
+ <div class="wrap hero__grid">
+  <div>
+   <span class="eyebrow eyebrow--red">Design system v0.1 · plain HTML + CSS variables + vanilla JS</span>
+   <h1>Built to be <em>tested.</em><br>Built to be found.</h1>
+   <div class="qa"><p>This is the shared kit for every Broward Impact template: one stylesheet (about 24 KB), one script (about 4 KB), no framework. Every answer, spec and FAQ is plain HTML, so Google and AI crawlers read it without running JavaScript. It pastes into Elementor or runs as a static site.</p></div>
+   <div class="meta"><span>Last updated: October 12, 2026</span><span>Reviewed by <span class="verify">[[VERIFY: reviewer name]]</span></span></div>
+   <nav class="sg-nav" aria-label="Styleguide sections" style="margin-top:24px"><a href="#tokens">Tokens</a><a href="#signature">Signature</a><a href="#heroes">Heroes</a><a href="#trust">Trust</a><a href="#cards">Cards</a><a href="#tables">Tables</a><a href="#steps">Steps + FAQ</a><a href="#proof">Reviews + media</a><a href="#form">Form</a><a href="#cta">CTA + footer</a></nav>
+  </div>
+  <div class="plate plate--red" aria-label="Example test plate">
+   <div class="plate__dp"><b>DP<br>50</b><small>PSF</small></div>
+   <div class="plate__body"><strong>Tested to hurricane force</strong>Large-missile impact<dl><dt>Test</dt><dd>TAS 201 / 202 / 203</dd><dt>NOA</dt><dd><span class="verify">[[VERIFY: NOA #]]</span></dd><dt>Series</dt><dd><span class="verify">[[VERIFY: product]]</span></dd></dl></div>
+  </div>
+ </div>
+</section>
+
+<!-- TOKENS -->
+<section class="section" id="tokens"><div class="wrap">
+ <span class="eyebrow">01 · Tokens</span><h2>What colors, type and spacing does the system use?</h2>
+ <p>Brand red <code>#CB0B15</code> and ink on white, Oswald over Roboto, kept from the live site. Dark hero bands, soft cards, pill buttons and depth. Red is reserved for the primary action and proof.</p>
+ <div class="sg-sw">
+  <div><i style="background:var(--red)"></i><span>--red #CB0B15</span></div><div><i style="background:var(--red-600)"></i><span>--red-600 hover</span></div><div><i style="background:var(--red-100)"></i><span>--red-100 tint</span></div>
+  <div><i style="background:var(--ink)"></i><span>--ink</span></div><div><i style="background:var(--ink-3)"></i><span>--ink-3 muted</span></div><div><i style="background:var(--bg-2)"></i><span>--bg-2</span></div><div><i style="background:var(--bg-3)"></i><span>--bg-3</span></div>
+ </div>
+ <div class="sg-demo">
+  <p class="sg-code">--t-4xl · Oswald 600</p><div style="font:600 var(--t-4xl)/1 var(--font-head);text-transform:uppercase">Impact</div>
+  <p class="sg-code">--t-3xl</p><div style="font:600 var(--t-3xl)/1 var(--font-head);text-transform:uppercase">How much do impact windows cost?</div>
+  <p class="sg-code">--t-2xl / xl / lg</p><div style="font:600 var(--t-2xl)/1.1 var(--font-head);text-transform:uppercase">Question-style H2</div><div style="font:600 var(--t-xl)/1.1 var(--font-head);text-transform:uppercase">Card title</div>
+  <p class="sg-code">--t-base · Roboto 400 · 16–18px fluid</p><p>Body copy. Impact glass is laminated, so a missile strike can crack it without letting the storm in.</p>
+  <p class="sg-code">Spacing --s-1…s-9: 4 8 12 16 24 32 48 64 96 · Radius 8 / 14 / 22 / pill · Motion --dur-1/2/3 120/240/900ms, all off under prefers-reduced-motion</p>
+  <p><a href="#tokens">Default link</a> · <span class="verify">[[VERIFY: placeholder]]</span> · <span class="tag">Tag</span> · <span class="impact"><i></i>Impact tested</span></p>
+ </div>
+ <div class="sg-demo" style="display:flex;flex-wrap:wrap;gap:12px">
+  <a class="btn btn--primary btn--lg" href="#estimate">Free In-Home Estimate <span class="arr" aria-hidden="true">→</span></a>
+  <a class="btn" href="tel:+19549220606">Call 954.922.0606</a>
+  <a class="btn" href="sms:+19542805505">Text us</a>
+  <a class="btn" href="/my-safe-florida-home-program-broward/">Check Safe Florida Home eligibility</a>
+  <a class="link-arrow" href="#tokens">Text link →</a>
+ </div>
+</div></section>
+
+<!-- SIGNATURE -->
+<section class="section section--dark" id="signature"><div class="wrap">
+ <span class="eyebrow">02 · Signature idea</span><h2>What does “tested to hurricane force” look like?</h2>
+ <p>One visual language for proof: the <b>test plate</b> (DP rating, test protocol, NOA number) and the <b>load gauge</b> (rating against the wind-load scale). It appears on every product, brand and city page. Numbers are placeholders until manufacturer data is supplied.</p>
+ <div class="grid grid--2" style="margin-top:32px;align-items:center">
+  <div><div class="plate plate--red"><div class="plate__dp"><b>DP<br>+55</b><small>/ −65 PSF</small></div><div class="plate__body"><strong>Single-hung · Large missile</strong>Florida Product Approval<dl><dt>Test</dt><dd>TAS 201 / 202 / 203</dd><dt>NOA</dt><dd><span class="verify">[[VERIFY]]</span></dd><dt>Wind zone</dt><dd>HVHZ</dd></dl></div></div></div>
+  <div><p class="eyebrow">Design pressure vs. wind scale · illustrative</p><div class="gauge" style="--v:62%" role="img" aria-label="Illustrative gauge: rating at 62 percent of scale"><span>DP <span class="verify" style="color:#3D3200">[[VERIFY]]</span></span></div><div class="gauge-scale"><span>0</span><span>Code min.</span><span>HVHZ</span><span>Max rated</span></div><p style="margin-top:16px"><span class="impact"><i></i>Missile impact · 9 lb 2×4 at 50 ft/s</span></p><p class="sg-code">Test spec shown for illustration; confirm against the product’s NOA.</p></div>
+ </div>
+</div></section>
+
+<!-- HEROES -->
+<section class="section section--alt" id="heroes"><div class="wrap">
+ <span class="eyebrow">03 · Hero variants</span><h2>Which hero goes on which page?</h2>
+ <p>Answer-first: H1, quick answer, one primary action. The form never sits above the answer on organic pages; it leads on landing pages.</p>
+</div>
+<div class="hero hero--split" style="border-radius:var(--r-3);margin:0 var(--gutter) var(--s-5)"><div class="wrap hero__grid">
+ <div><span class="eyebrow eyebrow--red">A · Editorial split · pillars, products, cities</span><p class="h1">Impact windows in Broward County</p><div class="qa"><p>Impact windows use laminated glass in a rated frame so they pass Florida’s large-missile test and meet Broward’s High-Velocity Hurricane Zone code. <span class="verify">[[VERIFY: 40–60 word answer]]</span></p></div><div class="hero__ctas"><a class="btn btn--primary btn--lg" href="#estimate">Free In-Home Estimate <span class="arr" aria-hidden="true">→</span></a><a class="btn btn--lg" href="tel:+19549220606">Call</a></div></div>
+ <div class="ph grayscale" style="--ar:4/3"><span>Real install photo · 1200×900 AVIF</span></div>
+</div></div>
+<div class="hero hero--full" style="border-radius:var(--r-3);margin:0 var(--gutter) var(--s-5)"><div class="ph"><span>Full-bleed hero · showroom or install · preload</span></div><div class="wrap hero__grid"><div><span class="eyebrow" style="color:#fff">B · Full-bleed · home, showroom</span><p class="h1" style="color:#fff">Protect the house before the season starts</p><div class="hero__ctas"><a class="btn btn--primary btn--lg" href="#estimate">Free In-Home Estimate <span class="arr" aria-hidden="true">→</span></a></div></div><div class="qa"><p>Quick answer sits in a solid panel so contrast stays 4.5:1 over any photo.</p></div></div></div>
+<div class="hero hero--lp" style="border-radius:var(--r-3);margin:0 var(--gutter) var(--s-5)"><div class="wrap hero__grid" style="grid-template-columns:1fr;"><div><span class="eyebrow eyebrow--red">C · Landing page · minimal nav, form inline, noindex</span><p class="h1" style="font-size:var(--t-2xl)">Impact windows in Fort Lauderdale. Free in-home estimate.</p><p>Message-match H1 echoes the ad. Form component sits beside it on desktop and directly under it on mobile (section 08).</p></div></div></div>
+</section>
+
+<!-- TRUST -->
+<section class="section" id="trust"><div class="wrap">
+ <span class="eyebrow">04 · Trust, proof, stats</span><h2>How does the page prove who we are?</h2>
+ <p>A trust strip repeats beside every CTA. License links to the Florida DBPR lookup.</p>
+ <div class="trust trust--bar"><a href="https://www.myfloridalicense.com/wl11.asp?SID=&mode=0&p_LicNum=CGC1514968&page=1" rel="external noopener">Verify CGC 1514968 at DBPR</a><span><b><span class="verify">[[VERIFY: 20+]]</span></b> years in business</span><span><b><span class="verify">[[VERIFY: 4.9]]</span></b> Google rating · <span class="verify">[[VERIFY: count]]</span> reviews</span><span>1954 Tigertail Blvd, Dania Beach FL 33004</span><span>Financing available</span><span>My Safe Florida Home</span></div>
+ <div class="stats" style="margin-top:24px"><div><b><span class="verify">[[VERIFY]]</span></b><span>Years in business</span></div><div><b><span class="verify">[[VERIFY]]</span></b><span>Installs completed</span></div><div><b>CGC</b><span>1514968 licensed</span></div><div><b>HVHZ</b><span>Broward code experience</span></div></div>
+ <div class="license" style="margin-top:24px"><h3 style="margin:0;font-size:var(--t-lg)">Check our license yourself</h3><dl><dt>Company</dt><dd>Broward Impact Window &amp; Door, Inc.</dd><dt>License</dt><dd>Florida Certified General Contractor CGC 1514968</dd><dt>Address</dt><dd>1954 Tigertail Blvd, Dania Beach, FL 33004</dd><dt>Insurance</dt><dd><span class="verify">[[VERIFY: coverage statement]]</span></dd></dl><div class="badges"><span class="tag">Financing available</span><span class="tag">My Safe Florida Home</span><span class="tag">PACE</span></div><a class="link-arrow" href="https://www.myfloridalicense.com/wl11.asp?SID=&mode=0&p_LicNum=CGC1514968&page=1" rel="external noopener">Open Florida DBPR lookup →</a></div>
+</div></section>
+
+<!-- CARDS -->
+<section class="section section--alt" id="cards"><div class="wrap">
+ <span class="eyebrow">05 · Cards</span><h2>How are products and cities presented?</h2>
+ <div class="cards">
+  <a class="card" href="/impact-windows/single-hung/"><div class="ph grayscale" style="--ar:4/3"><span>Single-hung · photo</span></div><div class="card__body"><span class="eyebrow eyebrow--red" style="margin:0">Impact window</span><h3>Single-hung</h3><p>The most common replacement. Fixed top sash, operable bottom sash.</p><div class="card__meta"><span>DP <span class="verify">[[VERIFY]]</span></span><span>View →</span></div></div></a>
+  <a class="card" href="/impact-doors/sliding-glass-doors/"><div class="ph grayscale" style="--ar:4/3"><span>Sliding door · photo</span></div><div class="card__body"><span class="eyebrow eyebrow--red" style="margin:0">Impact door</span><h3>Sliding glass doors</h3><p>Large spans engineered for the HVHZ.</p><div class="card__meta"><span>DP <span class="verify">[[VERIFY]]</span></span><span>View →</span></div></div></a>
+  <a class="card card--city" href="/location/dania-beach-impact-windows/"><div class="ph grayscale"><span>Local project photo</span></div><div class="card__body"><span class="eyebrow eyebrow--red" style="margin:0">City hub · Broward</span><h3>Dania Beach</h3><ul><li>Showroom: 1954 Tigertail Blvd</li><li>Permits: <span class="verify">[[VERIFY: building dept note]]</span></li></ul><div class="card__meta"><span>Local projects</span><span>View →</span></div></div></a>
+ </div>
+</div></section>
+
+<!-- TABLES -->
+<section class="section" id="tables"><div class="wrap">
+ <span class="eyebrow">06 · Tables</span><h2>How do comparison and spec tables look?</h2>
+ <div class="tbl-wrap"><table class="tbl-cmp"><caption>Impact windows vs. hurricane shutters</caption><thead><tr><th scope="col">Factor</th><th scope="col">Impact windows</th><th scope="col">Shutters</th></tr></thead><tbody><tr><th scope="row">Always protected</th><td class="win">Yes, no deployment</td><td>Must be installed before each storm</td></tr><tr><th scope="row">Noise reduction</th><td class="win">Better</td><td>Minimal</td></tr><tr><th scope="row">Upfront cost</th><td>Higher <span class="verify">[[VERIFY]]</span></td><td class="win">Lower <span class="verify">[[VERIFY]]</span></td></tr></tbody></table></div>
+ <div class="tbl-wrap" style="margin-top:24px;max-width:640px"><table class="tbl-spec"><caption>Spec table · single-hung</caption><tbody><tr><th scope="row">Design pressure</th><td><span class="verify">[[VERIFY]]</span></td></tr><tr><th scope="row">Glass</th><td>Laminated, <span class="verify">[[VERIFY: interlayer]]</span></td></tr><tr><th scope="row">Frame</th><td><span class="verify">[[VERIFY]]</span></td></tr><tr><th scope="row">Approval</th><td>Florida Product Approval / NOA <span class="verify">[[VERIFY #]]</span></td></tr></tbody></table></div>
+</div></section>
+
+<!-- STEPS + FAQ -->
+<section class="section section--alt" id="steps"><div class="wrap">
+ <span class="eyebrow">07 · Steps and FAQ</span><h2>How long does installation take?</h2>
+ <p>Direct answer first, then the numbered steps. <span class="verify">[[VERIFY: timeline]]</span></p>
+ <ol class="steps steps--h"><li><h3>Free estimate</h3><p>In-home measure and scope review.</p></li><li><h3>Permit</h3><p>We file with your building department.</p></li><li><h3>Manufacture</h3><p>Made to your measurements. <span class="verify">[[VERIFY: weeks]]</span></p></li><li><h3>Install</h3><p>Install, closeout, final inspection.</p></li></ol>
+ <div class="faq" style="margin-top:32px;max-width:860px">
+  <details open><summary>Do impact windows lower insurance premiums?</summary><div class="a"><p>Qualifying opening protection can earn wind-mitigation credits, but savings vary by insurer and are not guaranteed.</p></div></details>
+  <details><summary>Does Broward require NOA-approved windows?</summary><div class="a"><p>Broward is in the High-Velocity Hurricane Zone, so products need Florida Product Approval or a Miami-Dade NOA. <span class="verify">[[VERIFY]]</span></p></div></details>
+  <details><summary>What is a DP rating?</summary><div class="a"><p>Design pressure: the wind load in pounds per square foot a product is rated to withstand.</p></div></details>
+ </div>
+</div></section>
+
+<!-- PROOF -->
+<section class="section" id="proof"><div class="wrap">
+ <span class="eyebrow">08 · Reviews and media</span><h2>What have customers said and what has the crew installed?</h2>
+ <div class="cards">
+  <figure class="review" style="margin:0"><div class="stars" aria-label="5 of 5 stars">★★★★★</div><blockquote><span class="verify">[[VERIFY: real review text, pulled from Google with permission]]</span></blockquote><footer>Name · City · Source link</footer></figure>
+  <figure class="review" style="margin:0"><div class="stars" aria-label="5 of 5 stars">★★★★★</div><blockquote><span class="verify">[[VERIFY: real review text]]</span></blockquote><footer>Name · City · Source link</footer></figure>
+ </div>
+ <div class="gallery" style="margin-top:32px">
+  <figure class="wide"><div class="ph grayscale" style="--ar:16/9"><span>Project 01 · AVIF/WebP</span></div><figcaption>Fort Lauderdale · <span class="verify">[[VERIFY]]</span></figcaption></figure>
+  <figure><div class="ph grayscale"><span>02</span></div><figcaption>Project 02</figcaption></figure>
+  <figure><div class="ph grayscale"><span>03</span></div><figcaption>Project 03</figcaption></figure>
+ </div>
+ <div class="grid grid--2" style="margin-top:32px">
+  <div><p class="eyebrow">Before / after · drag or arrow keys</p><div class="ba"><div class="ph"><span>Before</span></div><div class="ph after"><span>After</span></div><div class="ba__bar"></div><input type="range" min="0" max="100" value="50" aria-label="Before and after slider"></div></div>
+  <div><p class="eyebrow">Video facade · iframe loads on click</p><button class="vid" type="button" data-yt="" aria-label="Play showroom tour"><div class="ph"><span aria-hidden="true">Poster · WebP</span></div><span class="vid__play"><i></i>Play showroom tour</span></button></div>
+ </div>
+</div></section>
+
+<!-- FORM -->
+<section class="section section--alt" id="form"><div class="wrap">
+ <span class="eyebrow">09 · Estimate form</span><h2>How do visitors request an estimate?</h2>
+ <p>Four steps: project type, property, city and ZIP, contact with SMS consent. Without JavaScript all steps show as one plain form. This build runs in <b>test mode</b>: nothing is sent to GoHighLevel. Live mode mounts GHL form <code>BDZjXtPjhM9Cy8avLone</code> and writes hidden fields.</p>
+ <div style="max-width:620px" id="estimate-form">
+ <form class="form" data-bw-form data-test-mode data-ghl-id="BDZjXtPjhM9Cy8avLone" action="#" method="post" novalidate>
+  <div class="form__head"><h3>Free in-home estimate</h3><ol class="form__prog" aria-hidden="true"><li class="on"></li><li></li><li></li><li></li></ol></div>
+  <div class="form__test">Test mode · no data is sent to GoHighLevel</div>
+  <fieldset data-step data-auto class="is-on"><legend>What are you replacing?</legend><div class="opts"><label class="opt"><input type="radio" name="project_type" value="windows" required><span>Windows</span></label><label class="opt"><input type="radio" name="project_type" value="doors"><span>Doors</span></label><label class="opt"><input type="radio" name="project_type" value="both"><span>Windows + doors</span></label><label class="opt"><input type="radio" name="project_type" value="commercial"><span>Commercial</span></label></div></fieldset>
+  <fieldset data-step data-auto><legend>About the property</legend><div class="opts"><label class="opt"><input type="radio" name="property_type" value="single-family" required><span>Single-family home</span></label><label class="opt"><input type="radio" name="property_type" value="condo"><span>Condo / townhome</span></label><label class="opt"><input type="radio" name="property_type" value="multifamily"><span>Multifamily / building</span></label></div></fieldset>
+  <fieldset data-step><legend>Where is it?</legend><div class="field"><label for="f-city">City</label><input class="input" id="f-city" name="city" autocomplete="address-level2" required></div><div class="field"><label for="f-zip">ZIP</label><input class="input" id="f-zip" name="zip" inputmode="numeric" pattern="[0-9]{5}" autocomplete="postal-code" required></div></fieldset>
+  <fieldset data-step><legend>Where do we send your estimate?</legend>
+   <div class="field"><label for="f-name">Name</label><input class="input" id="f-name" name="name" autocomplete="name" required></div>
+   <div class="field"><label for="f-phone">Mobile phone</label><input class="input" id="f-phone" name="phone" type="tel" autocomplete="tel" required></div>
+   <div class="field"><label for="f-email">Email</label><input class="input" id="f-email" name="email" type="email" autocomplete="email" required></div>
+   <div class="field"><label for="f-hear">How did you hear about us?</label><select class="input" id="f-hear" name="hear_about_us"><option value="">Select</option><option>Google search</option><option>Google Ads</option><option>Facebook / Instagram</option><option>AI assistant (ChatGPT, Google AI, etc.)</option><option>Friend or neighbor</option><option>Showroom visit</option><option>Other</option></select></div>
+   <label class="consent"><input type="checkbox" name="sms_consent" required><span>I agree to receive calls and texts, including automated, from Broward Impact Window &amp; Door at the number above. Consent is not a condition of purchase. Msg &amp; data rates may apply; reply STOP to opt out. <a href="/privacy-policy/">Privacy</a> · <a href="/terms-conditions/">Terms</a> <span class="verify">[[VERIFY: legal wording]]</span></span></label>
+  </fieldset>
+  <input class="hp" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true">
+  <input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign"><input type="hidden" name="utm_term"><input type="hidden" name="utm_content"><input type="hidden" name="gclid"><input type="hidden" name="wbraid"><input type="hidden" name="gbraid"><input type="hidden" name="fbclid"><input type="hidden" name="fbp"><input type="hidden" name="fbc"><input type="hidden" name="landing_page"><input type="hidden" name="referrer">
+  <div class="form__nav"><button class="btn" type="button" data-back hidden>← Back</button><button class="btn btn--primary" type="button" data-next style="margin-left:auto">Next <span class="arr" aria-hidden="true">→</span></button><button class="btn btn--primary" type="submit" data-submit style="margin-left:auto" hidden>Request my estimate <span class="arr" aria-hidden="true">→</span></button></div>
+  <div class="form__done" hidden aria-live="polite"><h3>Test submit captured</h3><p>Nothing was sent. Payload including attribution fields:</p><pre class="sg-code" style="white-space:pre-wrap;overflow:auto;max-height:240px;margin:0"></pre></div>
+ </form>
+ <div class="trust" style="margin-top:12px"><a href="https://www.myfloridalicense.com/wl11.asp?SID=&mode=0&p_LicNum=CGC1514968&page=1" rel="external noopener">CGC 1514968</a><span>Free, no obligation</span><span>Financing available</span></div>
+ </div>
+</div></section>
+
+<!-- CTA + footer -->
+<section class="cta" id="cta"><div class="wrap"><div><span class="eyebrow" style="color:#fff">10 · CTA band</span><h2>Book your free in-home estimate</h2><p>Measured on site, written scope, no pressure.</p></div><div class="cta__row"><a class="btn btn--solid btn--lg" href="#estimate">Free In-Home Estimate →</a><a class="btn btn--lg" href="tel:+19549220606">954.922.0606</a></div></div></section>
+</main>
+
+<footer class="ftr"><div class="wrap">
+ <div class="ftr__grid">
+  <div><h4>Broward Impact Window &amp; Door, Inc.</h4><p style="font-size:var(--t-sm)">1954 Tigertail Blvd<br>Dania Beach, FL 33004<br><a href="tel:+19549220606">954.922.0606</a> · <a href="sms:+19542805505">Text 954-280-5505</a><br><a href="mailto:sales@browardimpact.com">sales@browardimpact.com</a></p><p style="font-size:var(--t-sm)"><a href="https://www.myfloridalicense.com/wl11.asp?SID=&mode=0&p_LicNum=CGC1514968&page=1" rel="external noopener">License CGC 1514968 · Verify at DBPR</a></p></div>
+  <div><h4>Products</h4><ul><li><a href="/impact-windows/">Impact windows</a></li><li><a href="/impact-doors/">Impact doors</a></li><li><a href="/replacement-windows/">Replacement</a></li><li><a href="/commercial/">Commercial</a></li></ul></div>
+  <div><h4>Plan and pay</h4><ul><li><a href="/impact-windows-cost-broward-county/">Cost guide</a></li><li><a href="/financing/">Financing</a></li><li><a href="/my-safe-florida-home-program-broward/">My Safe Florida Home</a></li><li><a href="/resources/">Resources</a></li></ul></div>
+  <div><h4>Areas</h4><ul><li><a href="/broward-county-impact-windows/">Broward</a></li><li><a href="/palm-beach-county-impact-windows/">Palm Beach</a></li><li><a href="/location/">All cities</a></li><li><a href="/showroom/">Showroom</a></li></ul></div>
+ </div>
+ <div class="ftr__legal">© 2026 Broward Impact Window &amp; Door, Inc. · <a href="/privacy-policy/">Privacy</a> · <a href="/terms-conditions/">Terms</a><br>Sitewide <span class="verify">[[VERIFY: sameAs profile URLs]]</span></div>
+</div></footer>
+
+<nav class="sticky" aria-label="Quick contact"><a href="tel:+19549220606">Call</a><a href="sms:+19542805505">Text</a><a href="#estimate">Free Estimate</a></nav>
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["HomeAndConstructionBusiness","LocalBusiness"],"@id":"https://www.browardimpact.com/#business","name":"Broward Impact Window & Door, Inc.","url":"https://www.browardimpact.com/","telephone":"+1-954-922-0606","email":"sales@browardimpact.com","address":{"@type":"PostalAddress","streetAddress":"1954 Tigertail Blvd","addressLocality":"Dania Beach","addressRegion":"FL","postalCode":"33004","addressCountry":"US"},"areaServed":[{"@type":"AdministrativeArea","name":"Broward County, Florida"},{"@type":"AdministrativeArea","name":"Palm Beach County, Florida"}],"hasCredential":{"@type":"EducationalOccupationalCredential","credentialCategory":"Florida Certified General Contractor","identifier":"CGC 1514968"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.browardimpact.com/"},{"@type":"ListItem","position":2,"name":"Styleguide"}]}]}</script>
+<script src="js/broward.js" defer></script>
+
+<!-- Showcase Hub Quick Navigation -->
+<div id="showcase-hub-nav" style="position:fixed;bottom:22px;right:22px;z-index:999999;font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+  <div style="background:rgba(14,15,17,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(212,175,55,0.45);border-radius:99px;padding:8px 18px;box-shadow:0 10px 30px rgba(0,0,0,0.6);display:flex;align-items:center;gap:12px;font-size:13px;color:#f4f7f5;">
+    <span style="color:#d4af37;font-weight:700;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;">★ Showcase Hub</span>
+    <span style="color:rgba(255,255,255,0.25);">|</span>
+    <a href="../index.html" style="color:#f4f7f5;text-decoration:none;font-weight:600;display:flex;align-items:center;gap:5px;transition:color 0.2s;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='#f4f7f5'">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      All Websites Menu
+    </a>
+  </div>
+</div>
+
+</body>
+</html>

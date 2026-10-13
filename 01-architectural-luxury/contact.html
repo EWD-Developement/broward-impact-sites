@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <title>Contact &amp; Consultations | Broward Impact Window &amp; Door</title>
+  <meta name="description" content="Schedule an architectural consultation with Broward Impact Window & Door. Dania Beach showroom & in-home engineering assessments. Call 954.922.0606.">
+  
+  <link rel="icon" href="img/logo.webp" type="image/webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="css/architectural-luxury.css">
+
+  <style>
+    .contact-container {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 7rem 1.5rem 6rem;
+      min-height: calc(100vh - 4.5rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .form-input {
+      width: 100%;
+      padding: 1.15rem 1.25rem;
+      border: 1px solid var(--obsidian);
+      background: var(--silica);
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      color: var(--obsidian);
+      outline: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .form-input:focus {
+      background: #ffffff;
+      border-color: var(--amber);
+    }
+  </style>
+</head>
+<body class="bg-silica text-obsidian">
+
+  <!-- Interactive Glass Cursor -->
+  <div class="glass-cursor" id="glassCursor" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="site-header scrolled">
+    <div class="header-container">
+      <a href="index.html" class="logo-brand">
+        <span>BROWARD IMPACT</span>
+        <span class="badge-tag">CGC 1514968</span>
+      </a>
+
+      <div style="display: flex; align-items: center; gap: 1.25rem;">
+        <a href="index.html" class="font-mono-label" style="text-decoration: none; color: var(--obsidian); opacity: 0.7;">
+          ← Back to Home
+        </a>
+        <a href="../02-design-studio/index.html" class="nav-cta-btn">Design Studio →</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="contact-container">
+    <div style="margin-bottom: 3rem;">
+      <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+        <span style="height: 1px; width: 3rem; background: var(--obsidian); opacity: 0.4;"></span>
+        <span class="font-mono-label" style="opacity: 0.6;">Consultations &amp; Estimates</span>
+      </div>
+
+      <h1 class="font-heading" style="font-size: clamp(3rem, 7vw, 5.8rem); line-height: 0.95;">
+        How can we<br>
+        <span class="text-amber">help?</span>
+      </h1>
+
+      <p class="font-body" style="font-size: 1.25rem; opacity: 0.8; max-width: 38rem; margin-top: 1.5rem; line-height: 1.6;">
+        Tell us about your South Florida property — site location, opening spans, and timeline. A Broward Impact project specialist will respond same-day.
+      </p>
+    </div>
+
+    <!-- Contact Form -->
+    <form id="contactForm" onsubmit="handleContactSubmit(event)" style="display: flex; flex-direction: column; gap: 1.25rem;">
+      <div style="display: grid; grid-template-columns: 1fr; gap: 1.25rem;">
+        <input type="text" required placeholder="Your Name" class="form-input">
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;">
+        <input type="email" required placeholder="Email Address" class="form-input">
+        <input type="tel" required placeholder="Phone Number" class="form-input">
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;">
+        <input type="text" required placeholder="Property City / ZIP Code" class="form-input">
+        <select class="form-input">
+          <option>Full Home Impact Window &amp; Door Replacement</option>
+          <option>New Construction Architectural Glazing</option>
+          <option>Custom Coastal Pivot / Sliding Doors</option>
+          <option>Commercial / Storefront Glass</option>
+        </select>
+      </div>
+
+      <div>
+        <textarea required rows="4" placeholder="Tell us about your project — opening dimensions, architectural preferences, or storm shutter replacements..." class="form-input"></textarea>
+      </div>
+
+      <div style="display: flex; gap: 0.75rem; align-items: flex-start; margin-top: 0.25rem;">
+        <input type="checkbox" id="smsConsent" required style="margin-top: 0.35rem;">
+        <label for="smsConsent" class="font-body" style="font-size: 0.85rem; opacity: 0.75; line-height: 1.5;">
+          I agree to receive project updates and consultation scheduling messages via text from Broward Impact Window &amp; Door at the phone number provided. Reply STOP to cancel at any time.
+        </label>
+      </div>
+
+      <div style="margin-top: 1.5rem;">
+        <button type="submit" class="btn-primary-amber" style="width: 100%; max-width: 22rem; justify-content: center;">
+          Send Project Inquiry <span>→</span>
+        </button>
+      </div>
+    </form>
+
+    <!-- Success Message -->
+    <div id="contactSuccess" style="display: none; padding: 3rem 0;">
+      <span class="font-mono-label text-amber">Inquiry Received</span>
+      <h2 class="font-heading" style="font-size: 3rem; margin-top: 0.5rem;">Thank you.<br><span class="text-amber">We'll be in touch.</span></h2>
+      <p class="font-body" style="font-size: 1.2rem; opacity: 0.8; margin-top: 1rem; max-width: 34rem;">
+        A representative from our Dania Beach engineering studio will reach out same-day to schedule your architectural consultation.
+      </p>
+      <div style="margin-top: 2rem;">
+        <a href="index.html" class="btn-primary-amber">Back to Home</a>
+      </div>
+    </div>
+
+    <!-- Direct Studio Contacts -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; border-top: 1px solid var(--obsidian); margin-top: 4rem; padding-top: 2.5rem;">
+      <div>
+        <span class="font-mono-label" style="opacity: 0.5;">Direct Phone</span>
+        <a href="tel:+19549220606" class="font-heading" style="font-size: 1.4rem; color: var(--obsidian); text-decoration: none; display: block; margin-top: 0.25rem;">(954) 922-0606</a>
+        <span class="font-mono-label" style="opacity: 0.5; font-size: 0.7rem;">Mon – Sat, 8:00 AM – 6:00 PM</span>
+      </div>
+
+      <div>
+        <span class="font-mono-label" style="opacity: 0.5;">Showroom &amp; Office</span>
+        <p class="font-body" style="font-size: 1.05rem; margin-top: 0.25rem;">
+          1954 Tigertail Blvd<br>Dania Beach, FL 33004
+        </p>
+      </div>
+
+      <div>
+        <span class="font-mono-label" style="opacity: 0.5;">Florida License</span>
+        <p class="font-body" style="font-size: 1.05rem; margin-top: 0.25rem;">
+          CGC 1514968<br>
+          <a href="https://www.myfloridalicense.com/wl11.asp?SID=&mode=0&p_LicNum=CGC1514968&page=1" target="_blank" rel="noopener noreferrer" style="color: var(--amber); font-size: 0.85rem; font-family: var(--font-mono); text-decoration: none;">Verify at DBPR Registry ↗</a>
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/architectural-luxury.js"></script>
+  <script>
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      document.getElementById('contactForm').style.display = 'none';
+      document.getElementById('contactSuccess').style.display = 'block';
+    }
+  </script>
+
+<!-- Showcase Hub Quick Navigation -->
+<div id="showcase-hub-nav" style="position:fixed;bottom:22px;right:22px;z-index:999999;font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+  <div style="background:rgba(14,15,17,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(212,175,55,0.45);border-radius:99px;padding:8px 18px;box-shadow:0 10px 30px rgba(0,0,0,0.6);display:flex;align-items:center;gap:12px;font-size:13px;color:#f4f7f5;">
+    <span style="color:#d4af37;font-weight:700;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;">★ Showcase Hub</span>
+    <span style="color:rgba(255,255,255,0.25);">|</span>
+    <a href="../index.html" style="color:#f4f7f5;text-decoration:none;font-weight:600;display:flex;align-items:center;gap:5px;transition:color 0.2s;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='#f4f7f5'">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      All Websites Menu
+    </a>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <title>Design Studio | Broward Impact Architectural Configurator</title>
+  <meta name="description" content="Configure custom hurricane impact windows and door systems for your South Florida residence. Floor plan opening placement, frame finishes, and instant architectural summary.">
+  
+  <link rel="icon" href="img/logo.webp" type="image/webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="css/architectural-luxury.css">
+
+  <style>
+    .studio-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 6rem;
+    }
+    .step-card {
+      background: #ffffff;
+      border: 1px solid var(--obsidian);
+      padding: 2.5rem;
+      margin-top: 2rem;
+    }
+    @media (max-width: 640px) {
+      .step-card { padding: 1.5rem; }
+    }
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    .blueprint-canvas-area {
+      position: relative;
+      width: 100%;
+      height: 440px;
+      background: #111317;
+      border: 1px solid var(--obsidian);
+      overflow: hidden;
+      cursor: crosshair;
+      user-select: none;
+    }
+    .blueprint-grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(212,175,55,0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212,175,55,0.12) 1px, transparent 1px);
+      background-size: 30px 30px;
+    }
+    .opening-pin {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: var(--obsidian);
+      border: 2px solid var(--amber);
+      color: var(--amber);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .opening-pin:hover {
+      transform: translate(-50%, -50%) scale(1.15);
+    }
+    .render-preview-box {
+      position: relative;
+      width: 100%;
+      height: 480px;
+      background: var(--obsidian);
+      overflow: hidden;
+      border: 1px solid var(--obsidian);
+    }
+    .render-preview-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: filter 0.6s var(--ease-out);
+    }
+    .render-filter-layer {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      transition: background 0.6s var(--ease-out);
+    }
+    .form-input {
+      width: 100%;
+      padding: 1rem 1.25rem;
+      border: 1px solid var(--obsidian);
+      background: var(--silica);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      color: var(--obsidian);
+      outline: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .form-input:focus {
+      background: #ffffff;
+      border-color: var(--amber);
+    }
+  </style>
+</head>
+<body class="bg-silica text-obsidian">
+
+  <!-- Interactive Glass Cursor -->
+  <div class="glass-cursor" id="glassCursor" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="site-header scrolled" style="position: sticky;">
+    <div class="header-container">
+      <a href="../01-architectural-luxury/index.html" class="logo-brand">
+        <span>BROWARD IMPACT</span>
+        <span class="badge-tag">DESIGN STUDIO</span>
+      </a>
+
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <a href="../01-architectural-luxury/index.html" class="font-mono-label" style="text-decoration: none; color: var(--obsidian); opacity: 0.7;">
+          ← Back to Overview
+        </a>
+        <a href="../01-architectural-luxury/contact.html" class="nav-cta-btn" style="padding: 0.45rem 1rem;">Consultation</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Interactive Multi-Step Bar -->
+  <div class="studio-stepper-bar" id="stepperBar">
+    <button class="stepper-step-item active" data-step="0">
+      <span class="step-num font-mono-label">01 / PLANS</span>
+      <span style="font-weight: 600; font-size: 0.85rem;">Floor Plan &amp; Photos</span>
+    </button>
+    <button class="stepper-step-item" data-step="1">
+      <span class="step-num font-mono-label">02 / OPENINGS</span>
+      <span style="font-weight: 600; font-size: 0.85rem;">Opening Placement</span>
+    </button>
+    <button class="stepper-step-item" data-step="2">
+      <span class="step-num font-mono-label">03 / SPECS</span>
+      <span style="font-weight: 600; font-size: 0.85rem;">Systems &amp; Finishes</span>
+    </button>
+    <button class="stepper-step-item" data-step="3">
+      <span class="step-num font-mono-label">04 / RENDER</span>
+      <span style="font-weight: 600; font-size: 0.85rem;">Lighting Simulation</span>
+    </button>
+    <button class="stepper-step-item" data-step="4">
+      <span class="step-num font-mono-label">05 / SUMMARY</span>
+      <span style="font-weight: 600; font-size: 0.85rem;">Architectural Brief</span>
+    </button>
+  </div>
+
+  <main class="studio-container">
+
+    <!-- ====================================================================
+         STEP 0: FLOOR PLAN & PHOTOS UPLOAD
+         ==================================================================== -->
+    <div class="step-section" id="step0">
+      <div style="margin-bottom: 2rem;">
+        <span class="font-mono-label text-amber">Step 01 of 05</span>
+        <h1 class="font-heading" style="font-size: clamp(2.4rem, 4vw, 3.8rem); line-height: 1.1; margin-top: 0.5rem;">
+          Upload architectural plans<br>
+          <span style="opacity: 0.4;">or property elevation photos.</span>
+        </h1>
+        <p class="font-body" style="font-size: 1.15rem; opacity: 0.8; max-width: 44rem; margin-top: 0.75rem;">
+          Provide your architectural drawings, elevation blueprints, or photos of your South Florida property so our engineering team can calibrate exact opening spans and design pressure parameters.
+        </p>
+      </div>
+
+      <div class="step-card">
+        <div class="upload-dropzone" id="dropzoneBox" data-magnify="true">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" style="margin: 0 auto 1.25rem; color: var(--amber);">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="17 8 12 3 7 8"/>
+            <line x1="12" y1="3" x2="12" y2="15"/>
+          </svg>
+          <h3 class="font-heading" style="font-size: 1.6rem;">Drop or select an architectural plan</h3>
+          <p class="font-body" style="opacity: 0.65; margin-top: 0.5rem;">PDF, PNG, JPG blueprints up to 50MB</p>
+          <input type="file" id="fileUploadInput" accept=".pdf,image/*" style="display: none;">
+          <button type="button" class="btn-primary-amber" style="margin-top: 1.75rem;" onclick="document.getElementById('fileUploadInput').click()">
+            Browse Files <span>↑</span>
+          </button>
+        </div>
+
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(0,0,0,0.1);">
+          <button type="button" class="btn-outline-silica" style="color: var(--obsidian); border-color: var(--obsidian);" id="useSamplePlanBtn">
+            Use Florida Coastal Villa Sample Plan
+          </button>
+          <button type="button" class="btn-primary-amber" onclick="goToStep(1)">
+            Continue to Openings →
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         STEP 1: INTERACTIVE OPENING PLACEMENT CANVAS
+         ==================================================================== -->
+    <div class="step-section" id="step1" style="display: none;">
+      <div style="margin-bottom: 2rem;">
+        <span class="font-mono-label text-amber">Step 02 of 05</span>
+        <h2 class="font-heading" style="font-size: clamp(2.4rem, 4vw, 3.8rem); line-height: 1.1; margin-top: 0.5rem;">
+          Place your openings<br>
+          <span style="opacity: 0.4;">on the blueprint canvas.</span>
+        </h2>
+        <p class="font-body" style="font-size: 1.15rem; opacity: 0.8; max-width: 44rem; margin-top: 0.75rem;">
+          Click anywhere on the architectural blueprint layout below to place hurricane window and door openings. Drag or click to configure each location.
+        </p>
+      </div>
+
+      <div class="step-card">
+        <!-- Interactive Canvas -->
+        <div class="blueprint-canvas-area" id="blueprintCanvas">
+          <div class="blueprint-grid-bg"></div>
+
+          <!-- Villa Blueprint Vector Lines -->
+          <svg style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none;" viewBox="0 0 800 440" preserveAspectRatio="none">
+            <g stroke="rgba(212,175,55,0.4)" stroke-width="1.2" fill="none">
+              <!-- Outer Perimeter -->
+              <rect x="100" y="60" width="600" height="320"/>
+              <!-- Interior Partition Walls -->
+              <line x1="320" y1="60" x2="320" y2="380"/>
+              <line x1="100" y1="220" x2="320" y2="220"/>
+              <line x1="500" y1="60" x2="500" y2="260"/>
+              <line x1="500" y1="260" x2="700" y2="260"/>
+              <!-- Architectural Room Labels -->
+              <text x="210" y="140" fill="rgba(244,247,245,0.3)" font-family="'JetBrains Mono', monospace" font-size="12" text-anchor="middle">PRIMARY SUITE</text>
+              <text x="210" y="300" fill="rgba(244,247,245,0.3)" font-family="'JetBrains Mono', monospace" font-size="12" text-anchor="middle">GUEST WING</text>
+              <text x="410" y="220" fill="rgba(244,247,245,0.3)" font-family="'JetBrains Mono', monospace" font-size="12" text-anchor="middle">GREAT ROOM</text>
+              <text x="600" y="160" fill="rgba(244,247,245,0.3)" font-family="'JetBrains Mono', monospace" font-size="12" text-anchor="middle">CHEF KITCHEN</text>
+              <text x="600" y="330" fill="rgba(244,247,245,0.3)" font-family="'JetBrains Mono', monospace" font-size="12" text-anchor="middle">COVERED LANAI</text>
+            </g>
+          </svg>
+
+          <!-- Pre-placed Interactive Pins -->
+          <div class="opening-pin" style="left: 210px; top: 60px;" title="North Bedroom Window">W1</div>
+          <div class="opening-pin" style="left: 410px; top: 380px;" title="Great Room Coastal Multi-Slide">D1</div>
+          <div class="opening-pin" style="left: 700px; top: 310px;" title="Lanai Pocket Door">D2</div>
+          <div class="opening-pin" style="left: 100px; top: 140px;" title="West Elevation Casement">W2</div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+          <div class="font-mono-label" style="opacity: 0.7;">
+            <span>Current Openings: <b class="text-amber" id="openingCountText">4 Configured</b></span>
+            <span style="margin-left: 1rem; opacity: 0.5;">(Click canvas to add opening)</span>
+          </div>
+          <div style="display: flex; gap: 1rem;">
+            <button type="button" class="btn-outline-silica" style="color:var(--obsidian); border-color:var(--obsidian);" onclick="goToStep(0)">← Back</button>
+            <button type="button" class="btn-primary-amber" onclick="goToStep(2)">Proceed to Specifications →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         STEP 2: SYSTEM SPECIFICATIONS & FINISHES
+         ==================================================================== -->
+    <div class="step-section" id="step2" style="display: none;">
+      <div style="margin-bottom: 2rem;">
+        <span class="font-mono-label text-amber">Step 03 of 05</span>
+        <h2 class="font-heading" style="font-size: clamp(2.4rem, 4vw, 3.8rem); line-height: 1.1; margin-top: 0.5rem;">
+          Select systems &amp; finishes.<br>
+          <span style="opacity: 0.4;">Curated architectural engineering.</span>
+        </h2>
+      </div>
+
+      <div class="step-card">
+        <!-- 1. Product Type -->
+        <div>
+          <span class="font-mono-label" style="opacity: 0.5;">System Category &amp; Style</span>
+          <div class="options-grid">
+            <button type="button" class="spec-selector-btn selected" data-group="prodType">Casement Window</button>
+            <button type="button" class="spec-selector-btn" data-group="prodType">Single-Hung Window</button>
+            <button type="button" class="spec-selector-btn" data-group="prodType">Fixed Architectural Picture</button>
+            <button type="button" class="spec-selector-btn" data-group="prodType">Monumental Pivot Door</button>
+            <button type="button" class="spec-selector-btn" data-group="prodType">Lift &amp; Slide Pocketing</button>
+            <button type="button" class="spec-selector-btn" data-group="prodType">French Door System</button>
+          </div>
+        </div>
+
+        <!-- 2. Frame Color -->
+        <div style="margin-top: 2rem;">
+          <span class="font-mono-label" style="opacity: 0.5;">Architectural Aluminum Finish</span>
+          <div class="options-grid">
+            <button type="button" class="spec-selector-btn selected" data-group="frameColor">
+              <span class="spec-swatch" style="background: #1a1a1b;"></span> Obsidian Black
+            </button>
+            <button type="button" class="spec-selector-btn" data-group="frameColor">
+              <span class="spec-swatch" style="background: #4a3e30;"></span> Bronze Architectural
+            </button>
+            <button type="button" class="spec-selector-btn" data-group="frameColor">
+              <span class="spec-swatch" style="background: #e2e4e1;"></span> Silica Alabaster
+            </button>
+            <button type="button" class="spec-selector-btn" data-group="frameColor">
+              <span class="spec-swatch" style="background: #9fa3a6;"></span> Anodized Clear Silver
+            </button>
+          </div>
+        </div>
+
+        <!-- 3. Glass Package -->
+        <div style="margin-top: 2rem;">
+          <span class="font-mono-label" style="opacity: 0.5;">Laminated Impact Glazing (HVHZ)</span>
+          <div class="options-grid">
+            <button type="button" class="spec-selector-btn selected" data-group="glassType">
+              Solar Control Low-E (SHGC 0.22)
+            </button>
+            <button type="button" class="spec-selector-btn" data-group="glassType">
+              Ultra-Clear Low-Iron Laminated
+            </button>
+            <button type="button" class="spec-selector-btn" data-group="glassType">
+              Neutral Gray Tinted
+            </button>
+            <button type="button" class="spec-selector-btn" data-group="glassType">
+              Turtle Code Coastal Bronze
+            </button>
+          </div>
+        </div>
+
+        <!-- 4. Hardware Finish -->
+        <div style="margin-top: 2rem;">
+          <span class="font-mono-label" style="opacity: 0.5;">Concealed Precision Hardware</span>
+          <div class="options-grid">
+            <button type="button" class="spec-selector-btn selected" data-group="hardware">
+              Champagne Gold Brushed
+            </button>
+            <button type="button" class="spec-selector-btn" data-group="hardware">
+              Satin Stainless Steel
+            </button>
+            <button type="button" class="spec-selector-btn" data-group="hardware">
+              Matte Black Obsidian
+            </button>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(0,0,0,0.1);">
+          <button type="button" class="btn-outline-silica" style="color:var(--obsidian); border-color:var(--obsidian);" onclick="goToStep(1)">← Back</button>
+          <button type="button" class="btn-primary-amber" onclick="goToStep(3)">Preview 3D Light Simulation →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         STEP 3: RENDERING PREVIEW & LIGHTING SIMULATION
+         ==================================================================== -->
+    <div class="step-section" id="step3" style="display: none;">
+      <div style="margin-bottom: 2rem;">
+        <span class="font-mono-label text-amber">Step 04 of 05</span>
+        <h2 class="font-heading" style="font-size: clamp(2.4rem, 4vw, 3.8rem); line-height: 1.1; margin-top: 0.5rem;">
+          Atmospheric light preview.<br>
+          <span style="opacity: 0.4;">Simulated coastal ambiance.</span>
+        </h2>
+      </div>
+
+      <div class="step-card">
+        <!-- Render Box -->
+        <div class="render-preview-box">
+          <img id="renderImg" src="img/architectural/studio-view.jpg" alt="Atmospheric rendering of configured impact window system">
+          <div class="render-filter-layer" id="renderLayer" style="background: linear-gradient(to bottom, rgba(212,175,55,0.25) 0%, rgba(212,175,55,0.05) 100%);"></div>
+
+          <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: flex-end; background: linear-gradient(to top, rgba(14,15,17,0.8), transparent); color: var(--silica);">
+            <div>
+              <span class="font-mono-label" style="opacity: 0.7;">Simulated Spec</span>
+              <h3 class="font-heading" id="renderSpecTitle" style="font-size: 1.6rem; color: var(--silica);">Casement Window · Obsidian Black · Low-E Glass</h3>
+            </div>
+            <span class="font-mono-label text-amber" id="renderLightLabel">Sunrise Golden Hour</span>
+          </div>
+        </div>
+
+        <!-- Render Controls -->
+        <div style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
+          <span class="font-mono-label" style="opacity: 0.5;">Atmosphere Simulator</span>
+          <div class="sim-buttons-group">
+            <button class="sim-btn render-btn active" onclick="setRenderLight(0)">Sunrise Golden Hour</button>
+            <button class="sim-btn render-btn" onclick="setRenderLight(1)">Florida High Noon</button>
+            <button class="sim-btn render-btn" onclick="setRenderLight(2)">Category 5 Hurricane Night</button>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(0,0,0,0.1);">
+          <button type="button" class="btn-outline-silica" style="color:var(--obsidian); border-color:var(--obsidian);" onclick="goToStep(2)">← Back</button>
+          <button type="button" class="btn-primary-amber" onclick="goToStep(4)">Review &amp; Submit Brief →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         STEP 4: PROJECT SUMMARY & LEAD SUBMISSION
+         ==================================================================== -->
+    <div class="step-section" id="step4" style="display: none;">
+      <div style="margin-bottom: 2rem;">
+        <span class="font-mono-label text-amber">Step 05 of 05</span>
+        <h2 class="font-heading" style="font-size: clamp(2.4rem, 4vw, 3.8rem); line-height: 1.1; margin-top: 0.5rem;">
+          Your architectural summary.<br>
+          <span style="opacity: 0.4;">Connect directly with the studio.</span>
+        </h2>
+      </div>
+
+      <div class="step-card" id="submitBriefCard">
+        <!-- Summary Specification Plate -->
+        <div style="background: var(--silica); border: 1px solid var(--obsidian); padding: 2rem; margin-bottom: 2.5rem;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid var(--obsidian); padding-bottom: 1rem;">
+            <span class="font-mono-label text-amber">Architectural Project Specification</span>
+            <span class="font-mono-label" style="opacity: 0.5;">CGC 1514968 · Dania Beach, FL</span>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+            <div>
+              <span class="font-mono-label" style="opacity: 0.5;">Configured Openings</span>
+              <p class="font-heading" style="font-size: 1.3rem;">4 Openings Identified</p>
+            </div>
+            <div>
+              <span class="font-mono-label" style="opacity: 0.5;">Primary System</span>
+              <p class="font-heading" style="font-size: 1.3rem;" id="sumSystem">Casement Window</p>
+            </div>
+            <div>
+              <span class="font-mono-label" style="opacity: 0.5;">Frame Finish</span>
+              <p class="font-heading" style="font-size: 1.3rem;" id="sumFrame">Obsidian Black</p>
+            </div>
+            <div>
+              <span class="font-mono-label" style="opacity: 0.5;">Laminated Glazing</span>
+              <p class="font-heading" style="font-size: 1.3rem;" id="sumGlass">Solar Low-E Laminated</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact & Project Form -->
+        <form id="studioLeadForm" onsubmit="handleStudioSubmit(event)" style="display: flex; flex-direction: column; gap: 1.25rem;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div>
+              <label class="font-mono-label" style="display: block; margin-bottom: 0.4rem; opacity: 0.7;">Full Name *</label>
+              <input type="text" class="form-input" required placeholder="Alexander Wright">
+            </div>
+            <div>
+              <label class="font-mono-label" style="display: block; margin-bottom: 0.4rem; opacity: 0.7;">Email Address *</label>
+              <input type="email" class="form-input" required placeholder="alexander@domain.com">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div>
+              <label class="font-mono-label" style="display: block; margin-bottom: 0.4rem; opacity: 0.7;">Phone Number *</label>
+              <input type="tel" class="form-input" required placeholder="(954) 555-0199">
+            </div>
+            <div>
+              <label class="font-mono-label" style="display: block; margin-bottom: 0.4rem; opacity: 0.7;">Property City or ZIP Code *</label>
+              <input type="text" class="form-input" required placeholder="Fort Lauderdale / 33301">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div>
+              <label class="font-mono-label" style="display: block; margin-bottom: 0.4rem; opacity: 0.7;">Project Scope</label>
+              <select class="form-input">
+                <option>Full Residence Window &amp; Door Replacement</option>
+                <option>New Architectural Construction</option>
+                <option>Custom Coastal Patio Doors Only</option>
+                <option>Commercial / Condominium Glazing</option>
+              </select>
+            </div>
+            <div>
+              <label class="font-mono-label" style="display: block; margin-bottom: 0.4rem; opacity: 0.7;">Consultation Format</label>
+              <select class="form-input">
+                <option>In-Home Architectural Consultation</option>
+                <option>Dania Beach Showroom Private Tour</option>
+                <option>Virtual Engineering Review</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="font-mono-label" style="display: block; margin-bottom: 0.4rem; opacity: 0.7;">Project Notes &amp; Architectural Preferences</label>
+            <textarea class="form-input" rows="3" placeholder="Tell our engineering team about any specific opening spans, architectural styles, or HOA requirements..."></textarea>
+          </div>
+
+          <!-- SMS Consent (100% GHL Compliant) -->
+          <div style="margin-top: 0.5rem; display: flex; gap: 0.75rem; align-items: flex-start;">
+            <input type="checkbox" id="smsConsent" required style="margin-top: 0.25rem;">
+            <label for="smsConsent" class="font-body" style="font-size: 0.85rem; opacity: 0.75; line-height: 1.5;">
+              I consent to receive text messages from Broward Impact Window &amp; Door regarding my architectural design summary and appointment scheduling at the number provided. Msg &amp; data rates may apply. Reply STOP to cancel at any time.
+            </label>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(0,0,0,0.1);">
+            <button type="button" class="btn-outline-silica" style="color:var(--obsidian); border-color:var(--obsidian);" onclick="goToStep(3)">← Back</button>
+            <button type="submit" class="btn-primary-amber">Submit Architectural Design Brief <span>→</span></button>
+          </div>
+        </form>
+
+        <!-- Success Confirmation State -->
+        <div id="successCard" style="display: none; text-align: center; padding: 3rem 1rem;">
+          <span class="font-mono-label text-amber">Brief Successfully Dispatched</span>
+          <h2 class="font-heading" style="font-size: 3.2rem; margin-top: 0.75rem;">Thank you.<br><span style="color: var(--amber);">Your design brief is received.</span></h2>
+          <p class="font-body" style="font-size: 1.2rem; opacity: 0.8; max-width: 32rem; margin: 1.25rem auto;">
+            A copy of your architectural specifications has been sent to your email. A Broward Impact project specialist will contact you same-day to arrange your consultation.
+          </p>
+          <div style="margin-top: 2rem;">
+            <a href="../01-architectural-luxury/index.html" class="btn-primary-amber">Return to Home Overview</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="js/architectural-luxury.js"></script>
+  <script>
+    // Configurator state management
+    let currentStep = 0;
+    const steps = [0, 1, 2, 3, 4];
+    const stepButtons = document.querySelectorAll('.stepper-step-item');
+
+    function goToStep(idx) {
+      currentStep = idx;
+      steps.forEach(s => {
+        const el = document.getElementById(`step${s}`);
+        if (el) el.style.display = s === idx ? 'block' : 'none';
+      });
+      stepButtons.forEach((btn, i) => {
+        btn.classList.toggle('active', i === idx);
+      });
+      window.scrollTo({ top: 120, behavior: 'smooth' });
+    }
+
+    stepButtons.forEach((btn, idx) => {
+      btn.addEventListener('click', () => goToStep(idx));
+    });
+
+    // Sample plan loader
+    document.getElementById('useSamplePlanBtn')?.addEventListener('click', () => {
+      goToStep(1);
+    });
+
+    // Blueprint Pin Placer
+    const canvas = document.getElementById('blueprintCanvas');
+    const openingCountText = document.getElementById('openingCountText');
+    let pinsCount = 4;
+
+    if (canvas) {
+      canvas.addEventListener('click', (e) => {
+        if (e.target.classList.contains('opening-pin')) return;
+        const rect = canvas.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        pinsCount++;
+        const pin = document.createElement('div');
+        pin.className = 'opening-pin';
+        pin.style.left = `${x}px`;
+        pin.style.top = `${y}px`;
+        pin.textContent = `W${pinsCount}`;
+        pin.title = `Opening ${pinsCount}`;
+        canvas.appendChild(pin);
+
+        if (openingCountText) openingCountText.textContent = `${pinsCount} Configured`;
+      });
+    }
+
+    // Spec Button Groups
+    document.querySelectorAll('.spec-selector-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const group = btn.getAttribute('data-group');
+        document.querySelectorAll(`.spec-selector-btn[data-group="${group}"]`).forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+
+        // Update summary text
+        if (group === 'prodType') document.getElementById('sumSystem').textContent = btn.textContent.trim();
+        if (group === 'frameColor') document.getElementById('sumFrame').textContent = btn.textContent.trim();
+        if (group === 'glassType') document.getElementById('sumGlass').textContent = btn.textContent.trim();
+      });
+    });
+
+    // Render Lighting Preview Switcher
+    const renderTints = [
+      { tint: "linear-gradient(to bottom, rgba(212,175,55,0.25) 0%, rgba(212,175,55,0.05) 100%)", label: "Sunrise Golden Hour", filter: "contrast(1.02) brightness(1.05)" },
+      { tint: "linear-gradient(to bottom, rgba(244,247,245,0.15) 0%, rgba(244,247,245,0.02) 100%)", label: "Florida High Noon", filter: "contrast(1.05) brightness(1)" },
+      { tint: "linear-gradient(to bottom, rgba(14,15,17,0.7) 0%, rgba(14,15,17,0.3) 100%)", label: "Category 5 Hurricane Night", filter: "contrast(1.2) brightness(0.85)" }
+    ];
+
+    function setRenderLight(idx) {
+      document.querySelectorAll('.render-btn').forEach((b, i) => b.classList.toggle('active', i === idx));
+      const rLayer = document.getElementById('renderLayer');
+      const rImg = document.getElementById('renderImg');
+      const rLabel = document.getElementById('renderLightLabel');
+      if (rLayer) rLayer.style.background = renderTints[idx].tint;
+      if (rImg) rImg.style.filter = renderTints[idx].filter;
+      if (rLabel) rLabel.textContent = renderTints[idx].label;
+    }
+
+    function handleStudioSubmit(e) {
+      e.preventDefault();
+      document.getElementById('studioLeadForm').style.display = 'none';
+      document.getElementById('successCard').style.display = 'block';
+    }
+  </script>
+
+<!-- Showcase Hub Quick Navigation -->
+<div id="showcase-hub-nav" style="position:fixed;bottom:22px;right:22px;z-index:999999;font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+  <div style="background:rgba(14,15,17,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(212,175,55,0.45);border-radius:99px;padding:8px 18px;box-shadow:0 10px 30px rgba(0,0,0,0.6);display:flex;align-items:center;gap:12px;font-size:13px;color:#f4f7f5;">
+    <span style="color:#d4af37;font-weight:700;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;">★ Showcase Hub</span>
+    <span style="color:rgba(255,255,255,0.25);">|</span>
+    <a href="../index.html" style="color:#f4f7f5;text-decoration:none;font-weight:600;display:flex;align-items:center;gap:5px;transition:color 0.2s;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='#f4f7f5'">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      All Websites Menu
+    </a>
+  </div>
+</div>
+
+</body>
+</html>
